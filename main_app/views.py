@@ -1,4 +1,4 @@
-# All modules necessary for Django to work
+# All modules necessary for Django to work + extra
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,7 +14,7 @@ import boto3
 
 from .models import Test
 
-# We will need this once we need to add more forms
+# We will need this once we need to add more forms for songs under playlists
 # from .forms import SomeForm
 
 # Things we will need once we set up AWS
@@ -27,23 +27,6 @@ def home(request):
 @login_required
 def loggedin(request):
   return render(request, 'loggedin.html')
-
-
-class TestCreate(LoginRequiredMixin, CreateView):
-  model = Test
-  fields = ['name']
-  # This will assign a future TestModel to the currently logged in user
-  def form_valid(self, form):
-    form.instance.user = self.request.user  
-    return super().form_valid(form)
-
-class TestUpdate(LoginRequiredMixin, UpdateView):
-  model = Test
-  fields = ['name']
-
-class TestDelete(LoginRequiredMixin, DeleteView):
-  model = Test
-  success_url = '/loggedin'
 
 @login_required
 def tests_detail(request, test_id):
@@ -75,3 +58,21 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+class TestCreate(LoginRequiredMixin, CreateView):
+  model = Test
+  fields = ['name']
+  # This will assign a future TestModel to the currently logged in user
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
+
+class TestUpdate(LoginRequiredMixin, UpdateView):
+  model = Test
+  fields = ['name']
+
+class TestDelete(LoginRequiredMixin, DeleteView):
+  model = Test
+  success_url = '/loggedin'
+
+
