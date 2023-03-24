@@ -1,4 +1,6 @@
-
-<img src="" id="landing-logo">
-<btn id="landing-login">Log In</btn>
-<btn id="landing-signup" >Sign Up</btn>
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'signup' %}"><h3>Sign Up</h3></a> 
+<br><br>
+<a href="{% url 'login' %}"><h3>Go Login</h3></a>
+{% endblock %}
