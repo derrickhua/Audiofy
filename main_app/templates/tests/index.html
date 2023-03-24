@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Test List</h1>
+
+{% for test in tests %}
+  <a href="{% url 'detail' test.id %}">
+    <div class="card">
+        <h1><span class="card-title">{{ test.name }}</span></h1>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
