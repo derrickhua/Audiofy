@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Test List</h1>
+<h1>Welcome, User</h1>
 
+
+<h1>Your Playlists:</h1>
+
+<h1>Others Playlists:</h1>
 {% for test in tests %}
   <a href="{% url 'detail' test.id %}">
     <div class="card">
