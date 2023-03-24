@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Test Details</h1>
+
+
+<div >
+<h1><span class="card-title">{{ test.name }}</span></h1>
+<div class="card-action">
+    <a href="{% url 'tests_update' test.id %}">Edit</a>
+    <a href="{% url 'tests_delete' test.id %}">Delete</a>
+</div>
+</div>
+
+{% endblock %}

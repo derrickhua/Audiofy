@@ -134,3 +134,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# This will redirect successful logins to the homepage
+# the homepage template has not yet been made so just leave it crossed out
+LOGIN_REDIRECT_URL = '/loggedin/'
+
+LOGOUT_REDIRECT_URL = '/'
