@@ -1,4 +1,4 @@
-# All modules necessary for Django to work
+# All modules necessary for Django to work + extra
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,13 +14,12 @@ import boto3
 
 from .models import Playlist
 
-# We will need this once we need to add more forms
+# We will need this once we need to add more forms for songs under playlists
 # from .forms import SomeForm
 
 # Things we will need once we set up AWS
 # S3_BASE_URL = 's3.ca-central-1.amazonaws.com/'
 # BUCKET = 'needtosetup'
-
 
 
 def landing_page(request):
@@ -29,7 +28,6 @@ def landing_page(request):
 @login_required
 def playlist_index(request):
   return render(request, 'index.html')
-
 
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
@@ -77,3 +75,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+
+
+

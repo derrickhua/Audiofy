@@ -10,6 +10,9 @@
     <a href="{% url 'tests_update' test.id %}">Edit</a>
     <a href="{% url 'tests_delete' test.id %}">Delete</a>
 </div>
+<br><br>
+<a href="{% url 'index' %}">Go Back to See Test Models</a> <br><br>
+<a href="{% url 'loggedin' %}">Go Back to LoggedIn</a>
 </div>
 
 {% endblock %}
