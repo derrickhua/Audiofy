@@ -32,27 +32,20 @@ class Song(models.Model):
         return reverse('songs_detail', kwargs={'pk': self.id})
   
 
-class Song(models.Model):
+class Artist(models.Model):
     """
-    Artists do not have CRUD functionality, you can only like or follow an artist
-    therefore the important related routes are associating or unassociating it with a playlist
+    Artists do not have CRUD functionality, you can only like or follow an artist, and they have an M:M relation with songs
+    therefore the important related routes are associating or unassociating it with songs
     """
-    title = models.CharField(max_length=40)
-    genre = models.CharField(max_length=15)
+    name = models.CharField(max_length=40)
+    songs = models.ManyToManyField(Song)
     album = models.CharField(max_length=50)
-    explicit = models.BooleanField()
 
     # same as playlist
-    likes = models.IntegerField()
+    follows = models.IntegerField()
 
-    # the value input into here will be found through the file in AWS
-    duration = models.DurationField()
-
-    # Unlike Playlist the Song's image will not be upladed and is instead inherent
-    cover_url = models.URLField()
-    
     def __str__(self):
-        return self.title
+        return self.name
 
     def get_absolute_url(self):
         return reverse('songs_detail', kwargs={'pk': self.id})
