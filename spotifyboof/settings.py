@@ -137,6 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # This will redirect successful logins to the homepage
 # the homepage template has not yet been made so just leave it crossed out
-LOGIN_REDIRECT_URL = '/loggedin/'
+LOGIN_REDIRECT_URL = '/playlists/'
 
 LOGOUT_REDIRECT_URL = '/'
