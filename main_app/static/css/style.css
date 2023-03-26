@@ -10,3 +10,7 @@ body {
     width: 156px;
 }
 
+#hover-nav:hover {
+    font-weight: bold;
+    font-size: 100%;
+}
