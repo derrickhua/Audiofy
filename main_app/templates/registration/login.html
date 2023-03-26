@@ -6,7 +6,7 @@
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="login" style="width:80px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;">
+    <input type="submit" class="btn btn-primary" value="login" style="width:80px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;  border: solid black;">
     <input type="hidden" name="next" value="{{ next }}">
 </form>
 {% endblock %}
