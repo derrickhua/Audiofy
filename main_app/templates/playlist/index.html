@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Welcome, User</h1>
-
+<br>
+<div class="text-center">
+  <h1>Welcome, {{ username }}.</h1>
+</div>
+<br><br>
 <h1>Your Playlists:</h1>
-
+<br><br>
 <h1>Others Playlists:</h1>
 {% for test in tests %}
   <a href="{% url 'detail' test.id %}">
@@ -13,6 +15,6 @@
     </div>
   </a>
 {% endfor %}
-
+<br><br>
 <a href="{% url 'logout' %}" class="btn btn-primary" style="width:90px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;  border: solid black;">Log Out</a>
 {% endblock %}

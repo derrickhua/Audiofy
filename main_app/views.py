@@ -54,8 +54,9 @@ def playlist_detail(request, test_id):
 
 @login_required
 def playlist_index(request):
+  username = request.user.username
   playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlist': playlists })
+  return render(request, 'playlist/index.html', { 'playlist': playlists, "username":username })
 
 def signup(request):
   error_message = ''
