@@ -14,3 +14,42 @@ body {
     font-weight: bold;
     font-size: 100%;
 }
+
+#id_first_name {
+    width: 65%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    max-width: 147px;
+}
+#id_username {
+    width: 65%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    max-width: 147px;
+}
+#id_password1 {
+    width: 68%;
+    margin-left: 26%;
+    max-width: 147px;
+}
+#id_last_name {
+    width: 60%;
+    max-width: 147px;
+    margin-right: 30%;
+}
+#id_email {
+    width: 70%;
+    max-width: 147px;
+    margin-right: 30%;
+
+}
+#id_password2 {
+    width: 80%;
+    margin-right: 15%;
+    margin-bottom: 10%;
+    max-width: 147px;
+}
+
+label {
+    display: none;
+}

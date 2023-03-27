@@ -88,8 +88,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'spotifyboof',
-        # 'USER': env('USER'),
-        # 'PASSWORD': env('PASSWORD')
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD')
     }
 }
 
