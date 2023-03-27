@@ -1,0 +1,14 @@
+{% extends 'base_with_nav.html' %}
+{% block content %}
+
+<h1>Song List</h1>
+
+{% for song in song_list %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ song.title }}</span>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

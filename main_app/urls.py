@@ -4,12 +4,18 @@ from . import views
 
 urlpatterns = [
     path('', views.landing_page, name='landing_page'),
+    # Anything related to authentication
+    path('accounts/signup/', views.signup, name='signup'),
     # Anything related to Test Model
     path('playlists/', views.playlist_index, name='index'),
     path('playlists/<int:playlist_id>/', views.playlist_detail, name='playlist_detail'),
     path('playlists/create/', views.PlaylistCreate.as_view(), name='playlist_create'),
     path('playlists/<int:pk>/update/', views.PlaylistUpdate.as_view(), name='playlist_update'),
     path('playlists/<int:pk>/delete/', views.PlaylistDelete.as_view(), name='playlist_delete'),
-    # Anything related to authentication
-    path('accounts/signup/', views.signup, name='signup'),
+    # Anything Related to Songs
+    path('songs/', views.SongList.as_view(), name='songs_index'),
+    # Associate a Song with a Playlist
+    path('playlists/<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name='assoc_song'),
+    # Unassociate a Song with a Playlist
+    path('playlists/<int:playlist_id>/unassoc_song/<int:song_id>/', views.unassoc_song, name='unassoc_song')
 ]

@@ -2,7 +2,7 @@
 {% block content %}
 <br>
 <div class="text-center">
-  <h1>Welcome, {{ username }}.</h1>
+  <h1>Welcome, {{ first_name }}.</h1>
 </div>
 <br><br>
 <div class="container">
@@ -13,13 +13,13 @@
 <div class="row  d-flex justify-content-center">
   <h1 class="col-auto">Others Playlists:</h1>
 </div>
-{% for test in tests %}
-  <a href="{% url 'detail' test.id %}">
+{% for playlist in playlists %}
+  <a href="{% url 'playlist_detail' playlist.id %}">
     <div class="card">
-        <h1><span class="card-title">{{ test.name }}</span></h1>
+        <h1><span class="card-title">{{ playlist.title }}</span></h1>
     </div>
   </a>
-
 {% endfor %}
+
 {% endblock %}
 </div>

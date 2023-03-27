@@ -7,12 +7,13 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import AudiofySignupForm
 
 # All modules necessary for Photo Uploading and AWS storage uploading
 import uuid
 import boto3
 
-from .models import Playlist
+from .models import Playlist, Song
 
 # We will need this once we need to add more forms for songs under playlists
 # from .forms import SomeForm
@@ -27,43 +28,48 @@ def landing_page(request):
 
 @login_required
 def playlist_index(request):
-  return render(request, 'index.html')
+  username = request.user.username
+  playlists = Playlist.objects.filter(user=request.user)
+  return render(request, 'playlist/index.html', { 'playlists': playlists, "username":username })
 
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
-  fields = ['name']
-  # This will assign a future TestModel to the currently logged in user
+  fields = ['title', 'description', 'image_url']
+
   def form_valid(self, form):
     form.instance.user = self.request.user  
     return super().form_valid(form)
 
 class PlaylistUpdate(LoginRequiredMixin, UpdateView):
   model = Playlist
-  fields = ['name']
+  fields = ['title', 'description', 'image_url']
 
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
   success_url = '/playlists'
 
 @login_required
-def playlist_detail(request, test_id):
-  playlists = Playlist.objects.get(id=test_id)
+def playlist_detail(request, playlist_id):
+  playlist = Playlist.objects.get(id=playlist_id)
+  songs_not_added = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
   return render(request, 'playlist/detail.html', {
-    'playlists': playlists, 
+    'playlist': playlist, 
+    'songs': songs_not_added,
   })
 
 @login_required
 def playlist_index(request):
-  username = request.user.username
+  first_name = request.user.first_name
+  last_name = request.user.last_name
   playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlist': playlists, "username":username })
+  return render(request, 'playlist/index.html', { 'playlist': playlists, "first_name": first_name, "last_name": last_name})
 
 def signup(request):
   error_message = ''
   if request.method == 'POST':
     # This is how to create a 'user' form object
     # that includes the data from the browser
-    form = UserCreationForm(request.POST)
+    form = AudiofySignupForm(request.POST)
     if form.is_valid():
       # This will add the user to the database
       user = form.save()
@@ -73,10 +79,19 @@ def signup(request):
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
-  form = UserCreationForm()
+  form = AudiofySignupForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+# Associating Songs with Playlist
+def assoc_song(request, song_id, playlist_id):
+  Playlist.objects.get(id=playlist_id).songs.add(song_id)
+  return redirect('playlist_detail', playlist_id=playlist_id)
 
+def unassoc_song(request, song_id, playlist_id):
+  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
+  return redirect('playlist_detail', playlist_id=playlist_id)
 
+class SongList(ListView):
+  model = Song
 
