@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Sign Up</h1>
+
+<div class="text-center">
+  <img src="https://i.imgur.com/vFJscXw.png" class="mx-auto img-fluid" style="max-width: 100px; margin-top: 80px; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); margin-bottom: 20px;">
+</div>
+
 
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="signup">
+<div class="container" style="font-size: 12px;">
+  <div class="row  d-flex justify-content-center">
+    <form class="col-auto" method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+  </div>
+  <div class="row  d-flex justify-content-center">
+    <input type="submit" class="btn" value="Sign Up" style="width:80px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;  border: solid black;">
+  </div>
 </form>
-
+</div>
 {% endblock %}
