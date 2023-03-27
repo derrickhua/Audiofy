@@ -12,18 +12,22 @@ class Song(models.Model):
     therefore the important related routes are associating or unassociating it with a playlist
     """
     title = models.CharField(max_length=40)
+    # Possibly temporrary depending on if artist model will get used
+    createdby = models.CharField(max_length=40)
     genre = models.CharField(max_length=15)
     album = models.CharField(max_length=50)
     explicit = models.BooleanField()
 
     # same as playlist
-    likes = models.IntegerField()
+    likes = models.IntegerField(default=0)
 
     # the value input into here will be found through the file in AWS
-    duration = models.DurationField(default=timedelta(days =1, seconds = 68400))
+    duration = models.DurationField(default=timedelta(days =0, seconds = 68400))
 
     # Unlike Playlist the Song's image will not be upladed and is instead inherent
     cover_url = models.URLField()
+
+    song_link = models.URLField(default='https://open.spotify.com/track/7recLQoZdzda5jSusYf1T6?si=7e6d0782a7c04868')
 
     def __str__(self):
         return self.title
@@ -63,14 +67,14 @@ class Playlist(models.Model):
     # You should be capable of uploading an image to the playlist else default / which will be stored in AWS
     # there are then 2 AWS buckets: songs, playlist images
     # the height and width of the img will be adjusted within a div + CSS 
-    image_url = models.CharField(max_length=150)
+    image_url = models.CharField(max_length=200)
 
     # Automatically sets the field to when the object is first created / basically a timestamp
     date_created = models.DateField(auto_now_add=True)
 
     # Need to make something that tracks likes / i.e. everytime button is pressed, the playlist gets another user attached to it
     # else it's just a number field using js to update +1 everytime the button is hit
-    likes = models.IntegerField()
+    likes = models.IntegerField(default=0)
 
     # attach M:M relationship with songs
     songs = models.ManyToManyField(Song)
@@ -79,7 +83,7 @@ class Playlist(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'test_id': self.id})
+        return reverse('playlist_detail', kwargs={'playlist_id': self.id})
 
 
 
