@@ -7,10 +7,6 @@ html {
     height: 100vh;
 }
 
-form, div {
-    margin-left: 100px;
-}
-
 #id_username {
     width: 150px;
 }
