@@ -5,14 +5,44 @@
 
 
 <div >
-<h1><span class="card-title">{{ test.name }}</span></h1>
+<h1><span class="card-title">{{ playlist.title }}</span></h1>
 <div class="card-action">
-    <a href="{% url 'tests_update' test.id %}">Edit</a>
-    <a href="{% url 'tests_delete' test.id %}">Delete</a>
+    <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
+    <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
 </div>
 <br><br>
-<a href="{% url 'index' %}">Go Back to See Test Models</a> <br><br>
-<a href="{% url 'loggedin' %}">Go Back to LoggedIn</a>
+<h3>Songs Associated with Playlist</h3>
+{% if playlist.songs.count %}
+{% for song in playlist.songs.all %}
+  <div class="card">
+        <h1>{{ song.title }} by {{ song.createdby }}</h1>
+    <div class="card-action">
+      <form action="{% url 'unassoc_song' playlist.id song.id %}" method="post">
+          {% csrf_token %}
+        <button type="submit" class="btn">Remove</button>
+      </form>
+    </div>
+  </div>
+{% endfor %}
+{% endif %}
+<br><br>
+<h3>Possible Songs</h3>
+    {% if songs.count %}
+      {% for song in songs.all %}
+        <div class="card">
+              <h1>{{ song.title }} by {{ song.createdby }}</h1>
+            
+          <div class="card-action">
+            <form action="{% url 'assoc_song' playlist.id song.id %}" method="post">
+                {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+<br><br>
+<a href="{% url 'index' %}">Go Back Home Page</a> <br><br>
 </div>
 
 {% endblock %}
