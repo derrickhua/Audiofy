@@ -1,18 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'base_with_nav.html' %}
 {% block content %}
-
-<h1>Welcome, User</h1>
-
-
-<h1>Your Playlists:</h1>
-
-<h1>Others Playlists:</h1>
+<br>
+<div class="text-center">
+  <h1>Welcome, {{ username }}.</h1>
+</div>
+<br><br>
+<div class="container">
+  <div class="row  d-flex justify-content-center">
+    <h1 class="col-auto">Your Playlists:</h1>
+  </div>
+<br><br>
+<div class="row  d-flex justify-content-center">
+  <h1 class="col-auto">Others Playlists:</h1>
+</div>
 {% for test in tests %}
   <a href="{% url 'detail' test.id %}">
     <div class="card">
         <h1><span class="card-title">{{ test.name }}</span></h1>
     </div>
   </a>
+
 {% endfor %}
-<a href="{% url 'loggedin' %}">Go Back to LoggedIn</a>
 {% endblock %}
+</div>
