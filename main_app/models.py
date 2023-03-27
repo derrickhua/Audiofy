@@ -63,7 +63,7 @@ class Playlist(models.Model):
     # You should be capable of uploading an image to the playlist else default / which will be stored in AWS
     # there are then 2 AWS buckets: songs, playlist images
     # the height and width of the img will be adjusted within a div + CSS 
-    image_url = models.ImageField()
+    image_url = models.CharField(max_length=150)
 
     # Automatically sets the field to now when the object is first created / basically a timestamp
     date_created = models.DateField(auto_now_add=True)
