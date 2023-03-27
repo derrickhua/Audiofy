@@ -1,5 +1,14 @@
 body {
     background: linear-gradient(to right, #008080, #3E9A44, #98FB98);
+    height: 100vh;
+}
+
+html {
+    height: 100vh;
+}
+
+form, div {
+    margin-left: 100px;
 }
 
 #id_username {

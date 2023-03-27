@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='playlist',
             name='image_url',
-            field=models.CharField(max_length=150),
+            field=models.CharField(max_length=200),
         ),
     ]
