@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # for models associated in 1:M relationship with the user, add this: 
 # user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,7 +20,7 @@ class Song(models.Model):
     likes = models.IntegerField()
 
     # the value input into here will be found through the file in AWS
-    duration = models.DurationField()
+    duration = models.DurationField(default=timedelta(days =1, seconds = 68400))
 
     # Unlike Playlist the Song's image will not be upladed and is instead inherent
     cover_url = models.URLField()
@@ -58,14 +58,14 @@ class Playlist(models.Model):
 
     # This duration will have to be calculated after returning each song's duration
     # we will be using the datetime library and specifically datetime.timedelta(hours=?, minutes=?, seconds=?)
-    duration = models.DurationField()
+    duration = models.DurationField(default=timedelta(days =1, seconds = 68400))
 
     # You should be capable of uploading an image to the playlist else default / which will be stored in AWS
     # there are then 2 AWS buckets: songs, playlist images
     # the height and width of the img will be adjusted within a div + CSS 
     image_url = models.ImageField()
 
-    # Automatically sets the field to now when the object is first created / basically a timestamp
+    # Automatically sets the field to when the object is first created / basically a timestamp
     date_created = models.DateField(auto_now_add=True)
 
     # Need to make something that tracks likes / i.e. everytime button is pressed, the playlist gets another user attached to it
