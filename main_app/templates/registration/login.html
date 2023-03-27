@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="text-center" style="margin-top: 5% ;"> Log in to Audiofy </h1>
+<h1 class="text-center" style="margin-top: 3%;"> Log in to Audiofy </h1>
 <div class="text-center">
-    <img src="https://i.imgur.com/vFJscXw.png" class="mx-auto img-fluid" style="max-width: 100px; margin-top: 5%; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); margin-bottom: 6%;">
+    <img src="https://i.imgur.com/vFJscXw.png" class="mx-auto img-fluid" style="max-width: 100px; margin-top: 3%; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); margin-bottom: 4%;">
 </div>
 
 
@@ -22,14 +22,14 @@
     <script>
         document.getElementById("id_username").placeholder = "Username";
         document.getElementById("id_password").placeholder = "Password";
-        document.getElementById("id_username").style.width = "82%";
-        document.getElementById("id_password").style.width = "80%";
-        document.getElementById("id_password").style.marginLeft = "8%";
-        document.getElementById("id_username").style.marginLeft = "8%";
+        document.getElementById("id_username").style.width = "90%";
+        document.getElementById("id_username").style.maxWidth = "90%";
+        document.getElementById("id_password").style.width = "90%";
+        document.getElementById("id_password").style.margin = "0 auto";
+        document.getElementById("id_username").style.margin = "0 auto";
         document.getElementById("id_password").style.marginBottom = "2%";
         document.getElementById("id_password").style.paddingBottom = "2%";
         document.getElementById("id_username").style.paddingBottom = "2%";
-        
 
     </script>
 {% endblock %}
