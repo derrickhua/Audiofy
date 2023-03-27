@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'spotifyboof.wsgi.application'
 SECRET_KEY = env("SECRET_KEY")
 
 DATABASES = {
-    'default': {
+        'default': {
         'ENGINE': 'django.db.backends.postgresql',
      	'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
