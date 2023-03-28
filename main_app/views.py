@@ -94,4 +94,3 @@ def unassoc_song(request, song_id, playlist_id):
 
 class SongList(ListView):
   model = Song
-

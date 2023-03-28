@@ -3,30 +3,67 @@
 
 <h1>Song Detail</h1>
 
-
 <div>
-    <div class="song_details">
-        <div class="music_player">
-        <nav>
-          <div class="circle">
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-          </div>
-        </nav>
-        <img src="" class="song-image"> 
-        <h1>Song Title</h1>
-        <p>Artisit Name</p>
+  <div class="song_details">
+    <div class="music_player">
+      <nav>
+        <div class="circle">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+      </nav>
+      <img src="" class="song-image"> 
+      <h1>Song Title</h1>
+      <p>Artisit Name</p>
       
-        <audio id="song">
-          <source src="" type="audio">
-        </audio>
-        <input type="range" value="0" id="progress">
-        <div class="controls">
-          <div><i class="fa fa-step-backward" aria-hidden="true"></i></div>
-          <div><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-          <div><i class="fa fa-step-forward" aria-hidden="true"></i></div>
-        </div>
-        </div>
+      <audio id="song">
+        <source src="" type="audio">
+      </audio>
+      <input type="range" value="0" id="progress">
+      <div class="controls">
+        <div><i class="fa fa-step-backward" aria-hidden="true"></i></div>
+        <div onclick="playPause()"><i class="fa fa-play-circle" aria-hidden="true" id="playIcon"></i></div>
+        <div><i class="fa fa-step-forward" aria-hidden="true"></i></div>
       </div>
+    </div>
+    
+    <script>
+      let progress= document.getElementById("progress");
+      let song= document.getElementById("song");
+      let playIcon= document.getElementById("playIcon");
+
+      song.onloadedmetadata= function(){
+        progress.max= song.duration;
+        progress.value= song.currentTime;
+      }
+
+      function playPause(){
+        if(playIcon.classList.contains("fa-pause")){
+          song.pause();
+          playIcon.classList.remove("fa-pause");
+          playIcon.classList.add("fa-play");
+        }
+        else{
+          song.play();
+          playIcon.classList.add("fa-pause");
+          playIcon.classList.remove("fa-palay");
+        }
+      }
+
+      if(song.play()){
+        setInterval(()=>{
+          progress.value= song.currentTime;
+        },500);
+      }
+
+      progress.onchange= function(){
+        song.play();
+        song.currentTime= progress.value;
+        playIcon.classList.add("fa-pause");
+        playIcon.classList.remove("fa-palay");
+      }
+    </script>
+
+  </div>
 </div>
 
 {% endblock %}
