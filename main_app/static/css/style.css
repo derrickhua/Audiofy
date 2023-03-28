@@ -1,6 +1,6 @@
 body {
-    background: linear-gradient(to bottom, #023e8a, #131213, #131213, #131213);
-    height: 100vh;
+    background: linear-gradient(to bottom, #023e8a, #131213, #131213, #131213, #131213, #131213, #131213);
+    background-repeat: no-repeat;
     color: white;
 }
 
