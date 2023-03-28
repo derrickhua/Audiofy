@@ -13,157 +13,29 @@
     </div>
 </div>
 <h1 class = "text-center" style="margin-bottom:2%; margin-top: 0.5%;">Available Songs</h1>
+{% for song in songs.all %}
+<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
+    <div class="row">
+        <div class="col-1">
+            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
+        </div>
+        <div class="col-5">
+            <a href=""><h6 class="card-header">{{ song.title }} by {{ song.createdby }}</h5></a>
+        </div>
+        <div class="col-1">
+            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
+        </div>
+        <div class="col-3">
+            <a href="#" class="btn btn-primary">Add to Playlist</a>
+        </div>
+        <div class="col-1">
+            <a href="#" class="btn btn-primary">Like</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
-<div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
-    <div class="row">
-        <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
-        </div>
-        <div class="col-5">
-            <h6 class="card-header">Blank Space by Taylor Swift</h5>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
-        </div>
-        <div class="col-3">
-            <a href="#" class="btn btn-primary">Add to Playlist</a>
-        </div>
-        <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
-        </div>
-    </div>
-</div>
+
+
+
 {% endblock %}

@@ -26,13 +26,6 @@ from .models import Playlist, Song
 def landing_page(request):
   return render(request, 'landing_page.html')
 
-@login_required
-def playlist_index(request):
-  username = request.user.username
-  playlists = Playlist.objects.filter(user=request.user)
-  print(playlists)
-  return render(request, 'playlist/index.html', { 'playlists': playlists, "username":username })
-
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
   fields = ['title', 'description']
@@ -62,8 +55,9 @@ def playlist_detail(request, playlist_id):
 def playlist_index(request):
   first_name = request.user.first_name
   last_name = request.user.last_name
+  username = request.user.username
   playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlist': playlists, "first_name": first_name, "last_name": last_name})
+  return render(request, 'playlist/index.html', { 'playlists': playlists, "username": username, "first_name": first_name, "last_name": last_name})
 
 def signup(request):
   error_message = ''
@@ -99,4 +93,5 @@ class SongList(ListView):
 @login_required
 def songs_index(request):
   first_name = request.user.first_name
-  return render(request, 'song/songs.html', {'first_name': first_name})
+  songs = Song.objects.all()
+  return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs})
