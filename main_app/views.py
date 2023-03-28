@@ -95,3 +95,7 @@ def unassoc_song(request, song_id, playlist_id):
 class SongList(ListView):
   model = Song
 
+@login_required
+def songs_index(request):
+  first_name = request.user.first_name
+  return render(request, 'song/songs.html', {'first_name': first_name})
