@@ -82,11 +82,11 @@ def signup(request):
 # Associating Songs with Playlist
 def assoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
-  return redirect('playlist_detail', playlist_id=playlist_id)
+  return redirect('songs_index')
 
 def unassoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.remove(song_id)
-  return redirect('playlist_detail', playlist_id=playlist_id)
+  return redirect('songs_index')
 
 class SongList(ListView):
   model = Song
@@ -94,6 +94,7 @@ class SongList(ListView):
 @login_required
 def songs_index(request):
   first_name = request.user.first_name
+  playlists = Playlist.objects.filter(user=request.user)
   if request.method == 'POST':
       query = request.POST.get('q')
       object_list = Song.objects.filter(
@@ -102,4 +103,4 @@ def songs_index(request):
       songs = object_list
   else: 
     songs = Song.objects.all()
-  return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs})
+  return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs, 'playlists':playlists})
