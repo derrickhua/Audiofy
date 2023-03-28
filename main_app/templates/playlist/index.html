@@ -2,37 +2,57 @@
 {% block content %}
 <br>
 <div class="text-center">
-  <h1>Welcome, {{ first_name }}.</h1>
+  <h2>Welcome, {{ first_name }}.</h1>
 </div>
-<br><br>
+<br>
 <div class="container">
-  <div class="row  d-flex justify-content-center">
-    <h1 class="col-auto">Your Playlists:</h1>
+  <div class="row  d-flex justify-content-center  text-center">
+    <h2 class="col-auto">Your Playlists</h1>
     {% for playlist in playlists %}
       <a href="{% url 'playlist_detail' playlist.id %}" style="text-decoration: none;">
-        <div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
+        <div class="card cards22" style="margin: 0 10% 0 13%; margin-bottom: 1%; background-color: darkcyan; width:78%;">
           <div class="row">
               <div class="col">
-                  <div class="card-header">{{ playlist.title }}</div>
+                  <div class="card-header" > Name: {{ playlist.title }}</div>
               </div>
               <div class="col">
-                <div class="card-header">{{ playlist.description }}</div>
+                <div class="card-header"> Description: {{ playlist.description }}</div>
               </div>
           </div>
       </div>
+    </a>
+  {% endfor %}
+  </div>
+
+<div class="container">
+  <div class="row  d-flex justify-content-center  text-center">
+    <h2 class="col-auto">Other Playlists</h1>
+    {% for playlist in all_playlists %}
+    <a href="{% url 'playlist_detail' playlist.id %}" style="text-decoration: none;">
+        <div class="card cards22" style="margin: 0 10% 0 12%; margin-bottom: 1%; background-color: darkcyan; width:80%;">
+          <div class="row">
+              <div class="col">
+                  <div class="card-header" > Name: {{playlist.title }}</div>
+              </div>
+              <div class="col">
+                <div class="card-header"> Description: {{ playlist.description }}</div>
+              </div>
+          </div>
+      </div>
+    </a>
   {% endfor %}
   </div>
 <br><br>
-<div class="row  d-flex justify-content-center">
-  <h1 class="col-auto">Others Playlists:</h1>
-</div>
+
 <script>
-  playlistItem = document.getElementById("cards22")
-  playlistItem.addEventListener('mouseenter', function() {
-    playlistItem.style.backgroundColor = 'aqua';
-  });
-  playlistItem.addEventListener('mouseleave', function() {
+  playlistItems = document.querySelectorAll(".card.cards22")
+  playlistItems.forEach(function(playlistItem) {
+    playlistItem.addEventListener('mouseenter', function() {
+      playlistItem.style.backgroundColor = 'aqua';
+    })
+    playlistItem.addEventListener('mouseleave', function() {
     playlistItem.style.backgroundColor = 'darkcyan';
+    });
   });
 </script>
 
