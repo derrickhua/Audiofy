@@ -1,7 +1,4 @@
 .env
 */__pycache__/*
-<<<<<<< HEAD
 main_app/__pychache__
-=======
->>>>>>> main
 main_app/migrations

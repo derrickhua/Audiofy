@@ -189,3 +189,10 @@ label {
     display: none;
 }
 
+tr > th > label {
+    display: block;
+}
+
+input {
+    color: white;
+}
