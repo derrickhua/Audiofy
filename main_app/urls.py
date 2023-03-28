@@ -13,7 +13,7 @@ urlpatterns = [
     path('playlists/<int:pk>/update/', views.PlaylistUpdate.as_view(), name='playlist_update'),
     path('playlists/<int:pk>/delete/', views.PlaylistDelete.as_view(), name='playlist_delete'),
     # Anything Related to Songs
-    path('songs/', views.SongList.as_view(), name='songs_index'),
+    path('songs/', views.songs_index, name='songs_index'),
     # Associate a Song with a Playlist
     path('playlists/<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name='assoc_song'),
     # Unassociate a Song with a Playlist
