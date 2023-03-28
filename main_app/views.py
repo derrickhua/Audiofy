@@ -26,15 +26,9 @@ from .models import Playlist, Song
 def landing_page(request):
   return render(request, 'landing_page.html')
 
-@login_required
-def playlist_index(request):
-  username = request.user.username
-  playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlists': playlists, "username":username })
-
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
-  fields = ['title', 'description', 'image_url']
+  fields = ['title', 'description']
 
   def form_valid(self, form):
     form.instance.user = self.request.user  
@@ -42,7 +36,7 @@ class PlaylistCreate(LoginRequiredMixin, CreateView):
 
 class PlaylistUpdate(LoginRequiredMixin, UpdateView):
   model = Playlist
-  fields = ['title', 'description', 'image_url']
+  fields = ['title', 'description']
 
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
@@ -61,8 +55,9 @@ def playlist_detail(request, playlist_id):
 def playlist_index(request):
   first_name = request.user.first_name
   last_name = request.user.last_name
+  username = request.user.username
   playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlist': playlists, "first_name": first_name, "last_name": last_name})
+  return render(request, 'playlist/index.html', { 'playlists': playlists, "username": username, "first_name": first_name, "last_name": last_name})
 
 def signup(request):
   error_message = ''

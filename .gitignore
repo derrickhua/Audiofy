@@ -1,3 +1,4 @@
 .env
 */__pycache__/*
+main_app/__pychache__
 main_app/migrations
