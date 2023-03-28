@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import AudiofySignupForm
 
 # All modules necessary for Photo Uploading and AWS storage uploading
 import uuid
@@ -56,13 +57,19 @@ def playlist_detail(request, playlist_id):
     'songs': songs_not_added,
   })
 
+@login_required
+def playlist_index(request):
+  first_name = request.user.first_name
+  last_name = request.user.last_name
+  playlists = Playlist.objects.filter(user=request.user)
+  return render(request, 'playlist/index.html', { 'playlist': playlists, "first_name": first_name, "last_name": last_name})
 
 def signup(request):
   error_message = ''
   if request.method == 'POST':
     # This is how to create a 'user' form object
     # that includes the data from the browser
-    form = UserCreationForm(request.POST)
+    form = AudiofySignupForm(request.POST)
     if form.is_valid():
       # This will add the user to the database
       user = form.save()
@@ -72,7 +79,7 @@ def signup(request):
     else:
       error_message = 'Invalid sign up - try again'
   # A bad POST or a GET request, so render signup.html with an empty form
-  form = UserCreationForm()
+  form = AudiofySignupForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
@@ -88,3 +95,7 @@ def unassoc_song(request, song_id, playlist_id):
 class SongList(ListView):
   model = Song
 
+@login_required
+def songs_index(request):
+  first_name = request.user.first_name
+  return render(request, 'song/songs.html', {'first_name': first_name})
