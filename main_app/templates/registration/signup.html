@@ -1,23 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<br>
+<h1 class="text-center">Create An Audiofy Account</h1>
 
 <div class="text-center">
-  <img src="https://i.imgur.com/vFJscXw.png" class="mx-auto img-fluid" style="max-width: 100px; margin-top: 80px; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); margin-bottom: 20px;">
+  <img src="https://i.imgur.com/vFJscXw.png" class="mx-auto img-fluid" style="max-width: 100px; margin-top: 20px; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); margin-bottom: 20px;">
 </div>
-
 
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
-
-<div class="container" style="font-size: 12px;">
-  <div class="row  d-flex justify-content-center">
-    <form class="col-auto" method="post" action="{% url 'signup' %}">
+    <form class="text-center" method="post" autocomplete="off" action="{% url 'signup' %}" style="font-size:60%;">
     {% csrf_token %}
-    {{ form.as_p }}
+    <!-- {{ form.as_p }} -->
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <label for="firstname" class="form-label" ></label>
+          {{form.first_name}}
+        </div>
+        <div class="col-6">
+          <label for="lastname" class="form-label"></label>
+          {{form.last_name}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="username" class="form-label"> </label>
+          {{form.username}}
+        </div>
+        <div class="col-6">
+          <label for="email" class="form-label"> </label>
+          {{form.email}}
+        </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="password1" class="form-label"></label>
+          {{form.password1}}
+        </div>
+        <div class="col-6">
+          <label for="password2" class="form-label"></label>
+          {{form.password2}}
+        </div>
+      </div>
+      <div class="text-center">
+        <input type="submit" class="btn" value="Sign Up" style="width:80px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;  border: solid black;">
+      </div>
+    </form>
   </div>
-  <div class="row  d-flex justify-content-center">
-    <input type="submit" class="btn" value="Sign Up" style="width:80px; background-color: black; color: azure; border-radius: 80px; font-weight: bold;  border: solid black;">
-  </div>
-</form>
 </div>
+</div>
+
+<script>
+  document.getElementById("id_first_name").placeholder = "First Name";
+  document.getElementById("id_last_name").placeholder = "Last Name";
+  document.getElementById("id_username").placeholder = "Username";
+  document.getElementById("id_email").placeholder = "Email Address";
+  document.getElementById("id_password1").placeholder = "Password (at least 8 characters)";
+  document.getElementById("id_password2").placeholder = "Confirm Password";
+</script>
 {% endblock %}
