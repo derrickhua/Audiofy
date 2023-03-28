@@ -1,6 +1,7 @@
 body {
-    background: linear-gradient(to right, #008080, #3E9A44, #98FB98);
+    background: linear-gradient(to bottom, #023e8a, #131213, #131213, #131213);
     height: 100vh;
+    color: white;
 }
 
 .side-navbar {
@@ -31,13 +32,14 @@ body {
 }
 
 #hover-nav:hover {
-    font-weight: bold;
+    font-style: italic;
+    background-color: #181818;
 }
 
 #hover-nav {
     text-decoration: none; 
     color: black; 
-    font-size: 13px; 
+    font-size: 14px; 
     text-align: center;
 }
 
@@ -150,35 +152,35 @@ nav .circle {
 
 #id_first_name {
     width: 65%;
-    margin-left: 20%;
+    margin-left: 50%;
     margin-bottom: 5%;
     max-width: 147px;
 }
 #id_username {
     width: 65%;
-    margin-left: 20%;
+    margin-left: 50%;
     margin-bottom: 5%;
     max-width: 147px;
 }
 #id_password1 {
     width: 68%;
-    margin-left: 24%;
+    margin-left: 55%;
     max-width: 147px;
 }
 #id_last_name {
     width: 70%;
     max-width: 147px;
-    margin-right: 30%;
+    margin-right: 47%;
 }
 #id_email {
     width: 70%;
     max-width: 147px;
-    margin-right: 30%;
+    margin-right: 47%;
 
 }
 #id_password2 {
     width: 80%;
-    margin-right: 20%;
+    margin-right: 38%;
     margin-bottom: 10%;
     max-width: 147px;
 }
