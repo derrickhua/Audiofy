@@ -7,11 +7,32 @@
 <div class="container">
     <div class="row  d-flex justify-content-center">
         <div class="col-auto mr-3">
-            <a href=" {% url 'login' %}"  class="btn btn-primary" style="width:80px; max-width: 100%; background-color: #0077b6; color: azure; border-radius: 80px; font-weight: bold; border: solid  #0077b6;">Log in</a>
+            <a href=" {% url 'login' %}" id="btn-el" class="btn btn-primary" style="width:80px; max-width: 100%; background-color: #0077b6; color: azure; border-radius: 80px; font-weight: bold; border: solid  #0077b6;">Log in</a>
         </div>
         <div class="col-auto ml-3">
-            <a href=" {% url 'signup' %}"  class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;" >Sign Up</a>
+            <a href=" {% url 'signup' %}" id="btn-el2" class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;" >Sign Up</a>
         </div>        
     </div>
 </div>
+<script>
+    btnEl = document.getElementById("btn-el")
+        btnEl.addEventListener('mouseenter', function() {
+    btnEl.style.backgroundColor = 'aqua';
+    btnEl.style.border = 'solid aqua';
+    });
+    btnEl.addEventListener('mouseleave', function() {
+        btnEl.style.backgroundColor = '#0077b6';
+        btnEl.style.border = 'solid  #0077b6';
+        btnEl2 = document.getElementById("btn-el2")
+    btnEl2.addEventListener('mouseenter', function() {
+        btnEl2.style.backgroundColor = 'aqua';
+        btnEl2.style.border = 'solid aqua';
+    });
+    btnEl2.addEventListener('mouseleave', function() {
+        btnEl2.style.backgroundColor = '#0077b6';
+        btnEl2.style.border = 'solid  #0077b6';
+    });
+});
+</script>
+
 {% endblock %}

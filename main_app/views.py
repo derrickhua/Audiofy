@@ -57,7 +57,8 @@ def playlist_index(request):
   last_name = request.user.last_name
   username = request.user.username
   playlists = Playlist.objects.filter(user=request.user)
-  return render(request, 'playlist/index.html', { 'playlists': playlists, "username": username, "first_name": first_name, "last_name": last_name})
+  all_playlists = Playlist.objects.all()
+  return render(request, 'playlist/index.html', { 'playlists': playlists, 'all_playlists': all_playlists, "username": username, "first_name": first_name, "last_name": last_name})
 
 def signup(request):
   error_message = ''

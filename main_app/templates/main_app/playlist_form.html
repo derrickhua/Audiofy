@@ -11,7 +11,7 @@
       {{ form.as_table }}
     </table>
     <div style="display: flex; justify-content: center;">
-      <input type="submit" value="Submit!" class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;">
+      <input type="submit" value="Submit!" class="btn btn-primary" id='btn-el4'style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;">
     </div>
   </form>
 
@@ -22,5 +22,14 @@
   document.getElementById('id_description').style.color = 'black'
   document.getElementById('id_title').placeholder = 'Name of your Playlist'
   document.getElementById('id_description').placeholder = 'Playlist Description'
+  btnEl4 = document.getElementById("btn-el4")
+  btnEl4.addEventListener('mouseenter', function() {
+    btnEl4.style.backgroundColor = 'aqua';
+    btnEl4.style.border = 'solid aqua';
+    });
+    btnEl4.addEventListener('mouseleave', function() {
+    btnEl4.style.backgroundColor = '#0077b6';
+    btnEl4.style.border = 'solid #0077b6';
+    });
 </script>
 {% endblock %}
