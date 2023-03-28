@@ -189,10 +189,10 @@ label {
     display: none;
 }
 
-tr > th > label {
+/* tr > th > label {
     display: block;
 }
 
 input {
     color: white;
-}
+} */
