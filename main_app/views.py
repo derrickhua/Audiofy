@@ -102,3 +102,10 @@ def songs_index(request):
   else: 
     songs = Song.objects.all()
   return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs})
+
+@login_required
+def song_detail(request, song_id):
+  song = Song.objects.get(id=song_id)
+  return render(request, 'song_details.html',{
+    'song': song
+  })

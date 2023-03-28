@@ -4,27 +4,29 @@
 <h1>Playlist Details</h1>
 
 <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ playlist.title }}</h5>
-    <a hhref="{% url 'playlist_update' playlist.id %}" style="color: black;">Edit</a>
-    <a href="{% url 'playlist_delete' playlist.id %}" style="color: black;">Delete Playlist</a>
-    {% if playlist.songs.count %}
-    {% for song in playlist.songs.all %}
-      <div class="card">
-            <h1>{{ song.title }} by {{ song.createdby }}</h1>
-        <div class="card-action">
-          <form action="{% url 'unassoc_song' playlist.id song.id %}" method="post">
-              {% csrf_token %}
-            <button type="submit" class="btn">Remove Song</button>
-          </form>
+    <div class="card-body">
+      <h5 class="card-title">{{ playlist.title }}</h5>
+      <a hhref="{% url 'playlist_update' playlist.id %}" style="color: black;">Edit</a>
+      <a href="{% url 'playlist_delete' playlist.id %}" style="color: black;">Delete Playlist</a>
+      {% if playlist.songs.count %}
+      {% for song in playlist.songs.all %}
+        <div class="card-body">
+          <a href="/songs/{{ song.id }}">
+              <h1>{{ song.title }} by {{ song.createdby }}</h1>
+              <a href="{% url 'song.id' %}"></a>
+            <div class="card-action">
+              <form action="{% url 'unassoc_song' playlist.id song.id %}" method="post">
+                  {% csrf_token %}
+                <button type="submit" class="btn">Remove Song</button>
+              </form>
+            </div>
+          </a>
         </div>
-      </div>
-    {% endfor %}
-    {% endif %}
-  </div>
+      {% endfor %}
+      {% endif %}
+    </div>
 </div>
-<br><br>
-<a href="{% url 'index' %}">Go Back Home Page</a> <br><br>
+
 
 
 {% endblock %}
