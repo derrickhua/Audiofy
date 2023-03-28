@@ -3,12 +3,11 @@
 <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
         <div class = "col" style="margin-left:20%;">
-            <div class="search" style="width:90%; margin-left: 30%;">
-                <input type="text" class="form-control" placeholder="Search for a Song">
-            </div>
-        </div>
-        <div class = "col">
-            <button class="btn btn-primary" style="background-color: #0077b6;">Search</button>
+            <form action="{% url 'songs_index' %}" method="post" style="width:90%; margin-left: 30%;">
+                {% csrf_token %}
+                <input name="q" type="text" placeholder="Search...">
+                <button type="submit" class="btn btn-primary" style="background-color: #0077b6;">Search</button>
+            </form>
         </div>
     </div>
 </div>
