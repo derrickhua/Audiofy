@@ -2,11 +2,11 @@
 {% block content %}
 <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
-        <div class = "col" style="margin-left:20%;">
-            <form action="{% url 'songs_index' %}" method="post" style="width:90%; margin-left: 30%;">
+        <div class = "col" style="margin-left:5%;">
+            <form action="{% url 'songs_index' %}" method="post" style="width:140%; margin-left: 30%;">
                 {% csrf_token %}
-                <input name="q" type="text" placeholder="Search...">
-                <button type="submit" class="btn btn-primary" style="background-color: #0077b6;">Search</button>
+                <input id="search-bar"name="q" type="text" placeholder=" Search for a song..." style="width: 20%; margin-top: 0.5%;">
+                <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: #0077b6; scale: 80%; margin-bottom: 0.5%; margin-top: 0.06%;">Search</button>
             </form>
         </div>
     </div>
@@ -57,6 +57,24 @@
             songItem.style.backgroundColor = 'darkcyan';
          });
     });
+    btnEl5 = document.getElementById("btn-el5")
+    btnEl5.addEventListener('mouseenter', function() {
+      btnEl5.style.backgroundColor = 'aqua';
+      btnEl5.style.border = 'solid aqua';
+      });
+    btnEl5.addEventListener('mouseleave', function() {
+      btnEl5.style.backgroundColor = '#0077b6';
+      btnEl5.style.border = 'solid  #0077b6';
+      });
+    searchBarEl = document.getElementById("search-bar")
+    searchBarEl.addEventListener('mouseenter', function() {
+      searchBarEl.style.border = ' 1.5px solid black';
+      });
+    searchBarEl.addEventListener('mouseleave', function() {
+        searchBarEl.style.border = 'solid white'
+      });
+
+
 </script>
 {% endfor %}
 
