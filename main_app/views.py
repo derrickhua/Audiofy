@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AudiofySignupForm
-
+from django.db.models import Q
 # All modules necessary for Photo Uploading and AWS storage uploading
 import uuid
 import boto3
@@ -93,5 +93,12 @@ class SongList(ListView):
 @login_required
 def songs_index(request):
   first_name = request.user.first_name
-  songs = Song.objects.all()
+  if request.method == 'POST':
+      query = request.POST.get('q')
+      object_list = Song.objects.filter(
+        Q(title__icontains=query) | Q(createdby__icontains=query)
+      )
+      songs = object_list
+  else: 
+    songs = Song.objects.all()
   return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs})
