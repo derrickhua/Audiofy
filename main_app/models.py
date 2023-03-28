@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 # for models associated in 1:M relationship with the user, add this: 
 # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+# arn:aws:s3:::adiofyapp/*
+
 class Song(models.Model):
     """
     Songs do not have CRUD functionality, you can only like a song, update a playlist with a song or delete a song from a playlist
@@ -22,6 +24,7 @@ class Song(models.Model):
     likes = models.IntegerField(default=0)
 
     # the value input into here will be found through the file in AWS
+    # change this into a number second to minutes 
     duration = models.DurationField(default=timedelta(days =0, seconds = 68400))
 
     # Unlike Playlist the Song's image will not be upladed and is instead inherent
