@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 # for models associated in 1:M relationship with the user, add this: 
 # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+# arn:aws:s3:::adiofyapp/*
+
 class Song(models.Model):
     """
     Songs do not have CRUD functionality, you can only like a song, update a playlist with a song or delete a song from a playlist
@@ -22,12 +24,13 @@ class Song(models.Model):
     likes = models.IntegerField(default=0)
 
     # the value input into here will be found through the file in AWS
-    duration = models.DurationField(default=timedelta(days =0, seconds = 68400))
+    # change this into a number second to minutes 
+    # duration = models.DurationField(default=timedelta(days =0, seconds = 68400))
 
     # Unlike Playlist the Song's image will not be upladed and is instead inherent
     cover_url = models.URLField()
 
-    song_link = models.URLField(default='https://open.spotify.com/track/7recLQoZdzda5jSusYf1T6?si=7e6d0782a7c04868')
+    song_link = models.URLField(default='')
 
     def __str__(self):
         return self.title
@@ -61,13 +64,12 @@ class Playlist(models.Model):
     description = models.CharField(max_length=300)
 
     # This duration will have to be calculated after returning each song's duration
-    # we will be using the datetime library and specifically datetime.timedelta(hours=?, minutes=?, seconds=?)
-    duration = models.DurationField(default=timedelta(days =1, seconds = 68400))
+    # we will be goign through each song and adding duration of each to a sum then inputting into the playlist 
 
     # You should be capable of uploading an image to the playlist else default / which will be stored in AWS
     # there are then 2 AWS buckets: songs, playlist images
     # the height and width of the img will be adjusted within a div + CSS 
-    image_url = models.CharField(max_length=200)
+    image_url = models.URLField()
 
     # Automatically sets the field to when the object is first created / basically a timestamp
     date_created = models.DateField(auto_now_add=True)

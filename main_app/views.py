@@ -30,11 +30,12 @@ def landing_page(request):
 def playlist_index(request):
   username = request.user.username
   playlists = Playlist.objects.filter(user=request.user)
+  print(playlists)
   return render(request, 'playlist/index.html', { 'playlists': playlists, "username":username })
 
 class PlaylistCreate(LoginRequiredMixin, CreateView):
   model = Playlist
-  fields = ['title', 'description', 'image_url']
+  fields = ['title', 'description']
 
   def form_valid(self, form):
     form.instance.user = self.request.user  
@@ -42,7 +43,7 @@ class PlaylistCreate(LoginRequiredMixin, CreateView):
 
 class PlaylistUpdate(LoginRequiredMixin, UpdateView):
   model = Playlist
-  fields = ['title', 'description', 'image_url']
+  fields = ['title', 'description']
 
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
