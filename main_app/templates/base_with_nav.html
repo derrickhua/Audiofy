@@ -18,10 +18,21 @@
         <a id = "hover-nav" href="{% url 'index' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center;  color: white; font-weight: bold;">Your Playlists</a>
         <a id = "hover-nav" href="{% url 'playlist_create' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center; margin-bottom: 100%;  color: white;  font-weight: bold;">Create Playlist</a>
         <p style="color: black; margin-top: 80%; padding-top: 5%; text-align: center; font-size: 11px; height: 0.0001vh;  color: white; border-top: solid grey;"> {{first_name}} <p>
-        <a href="{% url 'logout' %}" style="width:40px; background-color: #0077b6; color: azure; border-radius: 60px; border: solid #0077b6;font-size: 12px; text-decoration: none; margin-left: 20px;">Log Out</a>
+        <a href="{% url 'logout' %}" id ="btn-el"style="width:40px; background-color: #0077b6; color: azure; border-radius: 60px; border: solid #0077b6;font-size: 12px; text-decoration: none; margin-left: 20px;">Log Out</a>
     </nav>
 </head>
 <body>
+    <script>
+        btnEl = document.getElementById("btn-el")
+            btnEl.addEventListener('mouseenter', function() {
+        btnEl.style.backgroundColor = 'aqua';
+        btnEl.style.border = 'solid aqua';
+        });
+        btnEl.addEventListener('mouseleave', function() {
+            btnEl.style.backgroundColor = '#0077b6';
+            btnEl.style.border = 'solid #0077b6';
+    });
+    </script>
         {% block content %}
         {% endblock %}
     </main>

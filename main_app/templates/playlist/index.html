@@ -9,17 +9,32 @@
   <div class="row  d-flex justify-content-center">
     <h1 class="col-auto">Your Playlists:</h1>
     {% for playlist in playlists %}
-      <a href="{% url 'playlist_detail' playlist.id %}">
-        <div class="card">
-            <h1><span class="card-title">{{ playlist.title }}</span></h1>
-        </div>
-      </a>
+      <a href="{% url 'playlist_detail' playlist.id %}" style="text-decoration: none;">
+        <div id ="cards22" class="card" style="margin: 0 10% 0 15%; margin-bottom: 1%; background-color: darkcyan;">
+          <div class="row">
+              <div class="col">
+                  <div class="card-header">{{ playlist.title }}</div>
+              </div>
+              <div class="col">
+                <div class="card-header">{{ playlist.description }}</div>
+              </div>
+          </div>
+      </div>
   {% endfor %}
   </div>
 <br><br>
 <div class="row  d-flex justify-content-center">
   <h1 class="col-auto">Others Playlists:</h1>
 </div>
+<script>
+  playlistItem = document.getElementById("cards22")
+  playlistItem.addEventListener('mouseenter', function() {
+    playlistItem.style.backgroundColor = 'aqua';
+  });
+  playlistItem.addEventListener('mouseleave', function() {
+    playlistItem.style.backgroundColor = 'darkcyan';
+  });
+</script>
 
 
 {% endblock %}
