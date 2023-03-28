@@ -1,14 +1,25 @@
 {% extends 'base_with_nav.html' %}
 
 {% block content %}
+<h1 class="text-center" style="padding-top: 2%;">Make a Playlist</h1>
   <!-- Leaving the action empty makes the form post to the same url used to display it -->
-  <form action="" method="post" style="margin-left: 20%; color: white; visibility: visible;">
+  <form action="" method="post" style="visibility: visible;">
     <!-- Django requires the following for security purposes -->
     {% csrf_token %}
-    <table>
+    <table style="margin: 2% auto; text-align: right;">
       <!-- Render the inputs inside of <tr>s & <td>s -->
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!" class="btn">
+    <div style="display: flex; justify-content: center;">
+      <input type="submit" value="Submit!" class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;">
+    </div>
   </form>
+
+<script>
+  document.getElementById('id_title').style.color = 'black'
+  document.getElementById('id_title').style.height = 'auto'
+  document.getElementById('id_description').style.color = 'black'
+  document.getElementById('id_title').placeholder = 'Name of your playlist'
+  document.getElementById('id_description').placeholder = 'Enter a Description'
+</script>
 {% endblock %}
