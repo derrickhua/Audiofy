@@ -8,18 +8,19 @@
 <div class="container">
   <div class="row  d-flex justify-content-center">
     <h1 class="col-auto">Your Playlists:</h1>
+    {% for playlist in playlists %}
+      <a href="{% url 'playlist_detail' playlist.id %}">
+        <div class="card">
+            <h1><span class="card-title">{{ playlist.title }}</span></h1>
+        </div>
+      </a>
+  {% endfor %}
   </div>
 <br><br>
 <div class="row  d-flex justify-content-center">
   <h1 class="col-auto">Others Playlists:</h1>
 </div>
-{% for playlist in playlists %}
-  <a href="{% url 'playlist_detail' playlist.id %}">
-    <div class="card">
-        <h1><span class="card-title">{{ playlist.title }}</span></h1>
-    </div>
-  </a>
-{% endfor %}
+
 
 {% endblock %}
 </div>
