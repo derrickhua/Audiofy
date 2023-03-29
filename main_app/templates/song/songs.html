@@ -11,14 +11,14 @@
         <div class = "col" style="margin-left:10%;">
             <form action="{% url 'songs_index' %}" method="post" style="width:140%; margin-left: 30%;">
                 {% csrf_token %}
-                <select name='g' class="form-select" aria-label="Default select example" style="width:15%;">
+                <input id="search-bar"name="q" type="text" placeholder=" Search for a song..." style="margin-top: 0.3%; height: 90%;">
+                <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: #0077b6; scale: 110%; margin-bottom: 0.5%; margin-top: 0.06%; ">Search</button>
+                <select name='g' class="form-select" aria-label="Default select example" style="width:15%; margin-left: 2%;">
                     <option selected>Search by Genre</option>
                     {% for genre in genres %}
                     <option value={{ genre }}>{{ genre }}</option>
                     {% endfor %}
                 </select>
-                <input id="search-bar"name="q" type="text" placeholder=" Search for a song..." style="margin-top: 0.3%; height: 90%;">
-                <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: #0077b6; scale: 110%; margin-bottom: 0.5%; margin-top: 0.06%; ">Search</button>
             </form>
         </div>
     </div>
@@ -111,6 +111,4 @@
    }
 </script>
 {% endblock %}
-
-
 
