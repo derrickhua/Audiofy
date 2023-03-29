@@ -25,134 +25,49 @@
         <div><i class="fa fa-step-forward" aria-hidden="true" id="nextSong"></i></div>
       </div>
     </div>
+    
+    <script>
+      let progress= document.getElementById("progress");
+      let song= document.getElementById("song");
+      let playIcon= document.getElementById("playIcon");
+      let prevSong= document.getElementById("previousSong");
+      let nextSong= document.getElementById("nextSong");
+
+      song.onloadedmetadata= function(){
+        progress.max= song.duration;
+        progress.value= song.currentTime;
+      }
+
+      function playPause(){
+        if(playIcon.classList.contains("fa-pause-circle-o")){
+          song.pause();
+          playIcon.classList.remove("fa-pause-circle-o");
+          playIcon.classList.add("fa-play-cirle");
+        }
+        else{
+          song.play();
+          playIcon.classList.add("fa-pause-circle-o");
+          playIcon.classList.remove("fa-palay-cirle");
+        }
+      }
+
+      if(song.play()){
+        setInterval(()=>{
+          progress.value= song.currentTime;
+        },500);
+      }
+
+      progress.onchange= function(){
+        song.play();
+        song.currentTime= progress.value;
+        playIcon.classList.add("fa-pause-circle-o");
+        playIcon.classList.remove("fa-palay-cirle");
+      }
+
+      song.pause()
+    </script> 
   </div>
 </div>
 
-<script>
-  let progress= document.getElementById("progress");
-  let song= document.getElementById("song");
-  let playIcon= document.getElementById("playIcon");
-  let prevBtn= document.getElementById("previousSong");
-  let nextBtn= document.getElementById("nextSong");
-  let playList= document.ge
-
-  song.onloadedmetadata= function(){
-    progress.max= song.duration;
-    progress.value= song.currentTime;
-  }
-
-  function playPause(){
-    if(playIcon.classList.contains("fa-pause-circle-o")){
-      song.pause();
-      playIcon.classList.remove("fa-pause-circle-o");
-      playIcon.classList.add("fa-play-cirle");
-    }
-    else{
-      song.play();
-      playIcon.classList.add("fa-pause-circle-o");
-      playIcon.classList.remove("fa-palay-cirle");
-    }
-  }
-
-  if(song.play()){
-    setInterval(()=>{
-      progress.value= song.currentTime;
-    },500);
-  }
-
-  progress.onchange= function(){
-    song.play();
-    song.currentTime= progress.value;
-    playIcon.classList.add("fa-pause-circle-o");
-    playIcon.classList.remove("fa-palay-cirle");
-  }
-
-  // function prevSong(){
-
-  // }
-
-  // prevBtn.addEventListener('click', prevSong)
-  // nextBtn.addEventListener('click', nextSong)
-
-</script> 
-
-<script>
-  const musicContainer = document.getElementById('music-container');
-  const playBtn = document.getElementById('play');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-
-  const audio = document.getElementById('audio');
-  const title = document.getElementById('title');
-  const cover = document.getElementById('cover');
-
-
-  // Song titles
-  const songs = ['hey', 'summer', 'ukulele'];
-
-  // Keep track of song
-  let songIndex = 2;
-
-  // Initially load song details into DOM
-  loadSong(songs[songIndex]);
-
-  // Update song details
-  function loadSong(song) {
-    title.innerText = song;
-    audio.src = `music/${song}.mp3`;
-    cover.src = `images/${song}.jpg`;
-  }
-
-  // Play song
-  function playSong() {
-    musicContainer.classList.add('play');
-    playBtn.querySelector('i.fas').classList.remove('fa-play');
-    playBtn.querySelector('i.fas').classList.add('fa-pause');
-
-    audio.play();
-  }
-
-  // Pause song
-  function pauseSong() {
-    musicContainer.classList.remove('play');
-    playBtn.querySelector('i.fas').classList.add('fa-play');
-    playBtn.querySelector('i.fas').classList.remove('fa-pause');
-
-    audio.pause();
-  }
-
-  // Previous song
-  function prevSong() {
-    songIndex--;
-
-    if (songIndex < 0) {
-      songIndex = songs.length - 1;
-    }
-
-    loadSong(songs[songIndex]);
-
-    playSong();
-  }
-
-  // Next song
-  function nextSong() {
-    songIndex++;
-
-    if (songIndex > songs.length - 1) {
-      songIndex = 0;
-    }
-
-    loadSong(songs[songIndex]);
-
-    playSong();
-  }
-
-
-
-  // Change song
-  prevBtn.addEventListener('click', prevSong);
-  nextBtn.addEventListener('click', nextSong);
-
-</script>
 
 {% endblock %}

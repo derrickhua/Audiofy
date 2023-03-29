@@ -33,6 +33,7 @@ class Song(models.Model):
     song_link = models.URLField(default='')
 
     liked_by = models.ManyToManyField(User)
+    
     def __str__(self):
         return self.title
 
