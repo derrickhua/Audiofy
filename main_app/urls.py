@@ -18,6 +18,6 @@ urlpatterns = [
     # Associate a Song with a Playlist
     path('playlists/<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name='assoc_song'),
     # Unassociate a Song with a Playlist
-    path('playlists/<int:playlist_id>/unassoc_song/<int:song_id>/', views.unassoc_song, name='unassoc_song')
-
+    path('playlists/<int:playlist_id>/unassoc_song/<int:song_id>/', views.unassoc_song, name='unassoc_song'),
+    path('song/like_song', views.like_song, name='like_song') 
 ]
