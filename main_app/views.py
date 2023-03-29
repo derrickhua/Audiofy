@@ -95,19 +95,12 @@ def songs_index(request):
   genre = ''
   if request.method == 'POST':
       # if search by search bar
-      try: 
-        query = request.POST.get('q')
-        object_list = Song.objects.filter(
-          Q(title__icontains=query) | Q(createdby__icontains=query)
-        )        
-        songs = object_list
-      except:
-        query = request.POST.get('r')
-        genre = query
-        object_list = Song.objects.filter(
-          Q(genre__icontains=query)
-        )
-        songs = object_list
+      query = request.POST.get('q')
+      genre_query = request.POST.get('g')
+      object_list = Song.objects.filter(
+        Q(title__icontains=query) | Q(createdby__icontains=query) & Q(genre__icontains=genre_query) 
+      )        
+      songs = object_list
   else: 
     songs = Song.objects.order_by('-likes').all()
   genres = []
