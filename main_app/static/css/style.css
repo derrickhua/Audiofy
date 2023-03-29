@@ -1,8 +1,10 @@
 body {
-    background: linear-gradient(to bottom, #FFF6C3, white);
+    background: linear-gradient(to right,  #099CAB,#1EA69C, #77D55B);
     height: 100vh;
     background-attachment: fixed;
     color: black;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 30px;
 }
 
 .side-navbar {

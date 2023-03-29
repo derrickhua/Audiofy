@@ -4,20 +4,24 @@
 <div class="container">
   <div class="row  d-flex justify-content-center  text-center">
     {% if playlists %}
-      <h2 style="text-align: left; margin-left: 40%;">{{first_name}}'s Playlists</h2>
-      <h5 style="text-align: left; margin-left: 42%; margin-top: 2%;">Playlist Name <span style="margin-left: 9%;"> Description</span><span style="margin-left: 13%;"> Date Created</span></h5>
+      <h1 style="text-align: left; margin-left: 40%;">{{first_name}}'s Playlists</h1>
+      <h5 style="text-align: left; margin-left: 45%; margin-top: 2%;">Playlist Name <span style="margin-left: 15%;"> Description</span><span style="margin-left: 17%;"> Date Created</span></h5>
       {% for playlist in playlists %}
         <a href="{% url 'playlist_detail' playlist.id %}" style="text-decoration: none;">
-          <div class="card cards22" style="color: white; margin: 0 10% 0 14%; margin-bottom: 1%; background: linear-gradient(to bottom, #A30101, rgb(239, 111, 111));background-attachment: fixed; width:74%;">
+          <div class="card cards22" style="color: black; margin: 0 10% 0 14%; margin-bottom: 1%; background: #F8F8F8 ;background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
             <div class="row">
                 <div class="col">
-                    <div class="card-header" > {{ playlist.title }}</div>
+                    <div class="card-content" style="margin-top: 1%;"> {{ playlist.title }}</div>
                 </div>
                 <div class="col">
-                  <div class="card-header"> {{ playlist.description|slice:":25" }}</div>
+                  {% if playlist.description|length >= 22 %}
+                    <div class="card-content" style="margin-top: 1%;"> {{ playlist.description|slice:":21" }}.. </div>
+                  {% else %}
+                    <div class="card-content" style="margin-top: 1%;"> {{ playlist.description|slice:":21" }} </div>
+                  {% endif %}
                 </div>
                 <div class="col">
-                  <div class="card-header" > {{ playlist.date_created }}</div>
+                  <div class="card-content" style="margin-top: 1%;"> {{ playlist.date_created }}</div>
               </div>
             </div>
         </div>
@@ -29,21 +33,26 @@
 
 <div class="container">
   <div class="row  d-flex justify-content-center  text-center">
-    <h2 style="text-align: left; margin-left: 40%; margin-top: 2%;">Other Playlists</h1>
-    <h5 style="text-align: left; margin-left: 40%; margin-top: 2%;">Playlist Name <span style="margin-left: 8%;"> Created By</span><span style="margin-left: 13%;"> Description</span></h5>
+    <h1 style="text-align: left; margin-left: 40%; margin-top: 2%;">Other Playlists</h1>
+   
     {% for playlist in all_playlists %}
     <a href="{% url 'playlist_detail' playlist.id %}" style="text-decoration: none;">
-      <div class="card cards22" style="color: white; margin: 0 10% 0 13%; margin-bottom: 1%; background: linear-gradient(to bottom, #A30101, rgb(239, 111, 111)); background-attachment: fixed; width:76%;">
+      <div class="card cards22" style="color: black; margin: 0 10% 0 13%; margin-bottom: 1%; background: whitesmoke; background-attachment: fixed; width:76%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
           <div class="row">
               <div class="col-4">
-                  <div class="card-header" > {{playlist.title }}</div>
+                  <div class="card-content" style="margin-top: 1%;" > {{playlist.title }} </div>
               </div>
-              <div class="col-3">
-                <div class="card-header" > {{playlist.user.first_name}} {{playlist.user.last_name}}</div>
+              <div class="col-4">
+                {% if playlist.description|length >= 24 %}
+                  <div class="card-content" style="margin-top: 1%;"> {{ playlist.description|slice:":24" }}...</div>
+                  </div>
+                {% else %}
+                  <div class="card-content" style="margin-top: 1%;"> {{ playlist.description|slice:":23" }} </div>
+                  </div>
+                {% endif %}
+              <div class="col-4">
+                <div class="card-content" style="margin-top: 1%;" > by {{playlist.user.first_name}} {{playlist.user.last_name}}</div>
             </div>
-              <div class="col-5">
-                <div class="card-header"> {{ playlist.description|slice:":30" }}</div>
-              </div>
           </div>
       </div>
     </a>
