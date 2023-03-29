@@ -26,10 +26,10 @@
         </div>
         <div class="col-2">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 10%; margin: 4% 4% 0 0; background-color: black;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 10%; margin: 5% 4% 0 0; background-color: black;">
                   Add to Playlist
                 </button>
-                <ul class="dropdown-menu" style="z-index: 9999;">
+                <ul class="dropdown-menu">
                 {% for playlist in playlists.all %}
                   <li>
                     <form  class="dropdown-item" action="{% url 'assoc_song' playlist.id song.id %}" method="post">
@@ -48,21 +48,34 @@
             
         </div>
         <div class="col-1">
-            <a href="#" class="btn btn-primary" onclick="return like( {{ song.id }} );" style="margin: 14% 2% 0 0;">Like</a>
+            <a onclick="return like( {{ song.id }} );" style="color: black; font-weight: bold;"><i class="fa fa-heart-o" aria-hidden="true" style="margin: 22% 2% 0 0;"></i>
+            </a>
         </div>
     </div>
 </div>
 
 <script>
-    // songItems = document.querySelectorAll(".card.cards22")
-    // songItems.forEach(function(songItem) {
-    //     songItem.addEventListener('mouseenter', function() {
-    //         songItem.style.scale = "105%";
-    //     })
-    //     songItem.addEventListener('mouseleave', function() {
-    //         songItem.style.scale = "100%";
-    //      });
-    // });
+    emptyHearts = document.querySelectorAll(".fa.fa-heart-o")
+    emptyHearts.forEach(function(heart) {
+        heart.addEventListener('mouseenter', function() {
+            heart.style.scale = "110%";
+        });
+        heart.addEventListener('mouseleave', function() {
+            heart.style.scale = "100%";
+        });
+        heart.addEventListener('click', function() {
+    if (heart.classList.contains("fa-heart")) {
+      heart.classList.remove("fa-heart");
+      heart.classList.add("fa-heart-o");
+      heart.style.color = "black";
+    } else {
+      heart.classList.remove("fa-heart-o");
+      heart.classList.add("fa-heart");
+      heart.style.color = "red";
+
+    }
+  });
+});
     btnEl5 = document.getElementById("btn-el5")
     btnEl5.addEventListener('mouseenter', function() {
       btnEl5.style.backgroundColor = 'aqua';
