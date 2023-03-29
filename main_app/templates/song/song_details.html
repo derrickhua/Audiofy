@@ -1,0 +1,70 @@
+{% extends 'base_with_nav.html' %}
+{% block content %}
+<div class="row  d-flex justify-content-center text-center">
+  <h1 class="col-auto">Song Details</h1>
+</div>
+
+<div>
+  <div class="song_details row  d-flex justify-content-center text-center">
+    <nav>
+      <a id="music-nav" class="fa fa-arrow-circle-o-left" aria-hidden="true" type=button onClick="javascript:history.go(-1);"></a>
+    </nav>
+    <div class="music_player">
+      <img src="" class="song-image"> 
+      <h1>{{ song.title }}</h1>
+      <p>{{ song.createdby }}</p> 
+      
+      <audio id="song">
+        <source src="{{song.song_link}}" type="audio/mp3">
+      </audio>
+      <input type="range" value="0" id="progress"> 
+        <div class="controls">
+        <div><i class="fa fa-step-backward" aria-hidden="true" id="previousSong"></i></div>
+        <div onclick="playPause()"><i class="fa fa-play-circle" aria-hidden="true" id="playIcon"></i></div>
+        <div><i class="fa fa-step-forward" aria-hidden="true" id="nextSong"></i></div>
+      </div>
+    </div>
+    
+    <script>
+      let progress= document.getElementById("progress");
+      let song= document.getElementById("song");
+      let playIcon= document.getElementById("playIcon");
+      let prevSong= document.getElementById("previousSong");
+      let nextSong= document.getElementById("nextSong");
+
+      song.onloadedmetadata= function(){
+        progress.max= song.duration;
+        progress.value= song.currentTime;
+      }
+
+      function playPause(){
+        if(playIcon.classList.contains("fa-pause-circle-o")){
+          song.pause();
+          playIcon.classList.remove("fa-pause-circle-o");
+          playIcon.classList.add("fa-play-cirle");
+        }
+        else{
+          song.play();
+          playIcon.classList.add("fa-pause-circle-o");
+          playIcon.classList.remove("fa-palay-cirle");
+        }
+      }
+
+      if(song.play()){
+        setInterval(()=>{
+          progress.value= song.currentTime;
+        },500);
+      }
+
+      progress.onchange= function(){
+        song.play();
+        song.currentTime= progress.value;
+        playIcon.classList.add("fa-pause-circle-o");
+        playIcon.classList.remove("fa-palay-cirle");
+      }
+    </script> 
+
+  </div>
+</div>
+
+{% endblock %}

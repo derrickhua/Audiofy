@@ -32,6 +32,7 @@ class Song(models.Model):
 
     song_link = models.URLField(default='')
 
+    liked_by = models.ManyToManyField(User)
     def __str__(self):
         return self.title
 
@@ -86,8 +87,6 @@ class Playlist(models.Model):
     
     def get_absolute_url(self):
         return reverse('playlist_detail', kwargs={'playlist_id': self.id})
-
-
 
 
 
