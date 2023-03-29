@@ -84,6 +84,31 @@ def assoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
   return redirect('songs_index')
 
+def like_song(request):
+  
+  # song = Song.objects.get(song_id).likes
+  song_id = int(request.GET.get("songId"))
+  song = Song.objects.get(id=song_id)
+  # return song_id
+  # print(song_id)
+  user_id = request.user.id
+  # print(song.liked_by.objects)
+  query = song.liked_by.filter(id=user_id)
+  if not query.exists():
+    song.liked_by.add(user_id)
+    # song.liked_by.save()
+    song.likes  = song.likes + 1
+    song.save()
+    
+    return HttpResponse(str(song.likes))
+  else:
+    song.liked_by.remove(user_id)
+    song.likes  = song.likes - 1
+    song.save()
+    return HttpResponse(str(song.likes))
+  # we will add code to increase in db
+  # return likes + 1
+
 def unassoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.remove(song_id)
   return redirect('songs_index')
@@ -102,8 +127,8 @@ def songs_index(request):
       )
       songs = object_list
   else: 
-    songs = Song.objects.all()
-  return render(request, 'song/songs.html', {'first_name': first_name, 'songs':songs, 'playlists':playlists})
+     songs = Song.objects.order_by('-likes').all()
+  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
 
 @login_required
 def song_detail(request, song_id):
@@ -111,4 +136,4 @@ def song_detail(request, song_id):
   return render(request, 'song/song_details.html',{
     'song': song
   })
-  
+

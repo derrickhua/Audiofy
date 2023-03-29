@@ -1,38 +1,52 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="text-center">
-    <img src="https://i.imgur.com/LUcnu2p.png" class="mx-auto img-fluid" style="max-width: 500px; margin-top: 6%; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
-</div>
-<br>
-<div class="container">
-    <div class="row  d-flex justify-content-center">
-        <div class="col-auto mr-3">
-            <a href=" {% url 'login' %}" id="btn-el" class="btn btn-primary" style="width:80px; max-width: 100%; background-color: #0077b6; color: azure; border-radius: 80px; font-weight: bold; border: solid  #0077b6;">Log in</a>
-        </div>
-        <div class="col-auto ml-3">
-            <a href=" {% url 'signup' %}" id="btn-el2" class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;" >Sign Up</a>
-        </div>        
-    </div>
-</div>
-<script>
-    btnEl = document.getElementById("btn-el")
-        btnEl.addEventListener('mouseenter', function() {
-    btnEl.style.backgroundColor = 'aqua';
-    btnEl.style.border = 'solid aqua';
-    });
-    btnEl.addEventListener('mouseleave', function() {
-        btnEl.style.backgroundColor = '#0077b6';
-        btnEl.style.border = 'solid  #0077b6';
-        btnEl2 = document.getElementById("btn-el2")
-    btnEl2.addEventListener('mouseenter', function() {
-        btnEl2.style.backgroundColor = 'aqua';
-        btnEl2.style.border = 'solid aqua';
-    });
-    btnEl2.addEventListener('mouseleave', function() {
-        btnEl2.style.backgroundColor = '#0077b6';
-        btnEl2.style.border = 'solid  #0077b6';
-    });
-});
-</script>
+{% load static %}
 
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Audiofy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="text-center">
+        <img src="https://i.imgur.com/LUcnu2p.png" class="mx-auto img-fluid" style="max-width: 500px; margin-top: 6%; border-radius: 20px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+    </div>
+    <br>
+    <div class="container">
+        <div class="row  d-flex justify-content-center">
+            <div class="col-auto mr-3">
+                <a href=" {% url 'login' %}" id="btn-el" class="btn btn-primary" style="width:80px; max-width: 100%; background-color: #0077b6; color: azure; border-radius: 80px; font-weight: bold; border: solid  #0077b6;">Log in</a>
+            </div>
+            <div class="col-auto ml-3">
+                <a href=" {% url 'signup' %}" id="btn-el2" class="btn btn-primary" style="width:90px; max-width: 100%; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid  #0077b6;" >Sign Up</a>
+            </div>        
+        </div>
+    </div>
+    <script>
+        btnEl = document.getElementById("btn-el")
+            btnEl.addEventListener('mouseenter', function() {
+        btnEl.style.backgroundColor = 'aqua';
+        btnEl.style.border = 'solid aqua';
+        });
+        btnEl.addEventListener('mouseleave', function() {
+            btnEl.style.backgroundColor = '#0077b6';
+            btnEl.style.border = 'solid  #0077b6';
+            btnEl2 = document.getElementById("btn-el2")
+        btnEl2.addEventListener('mouseenter', function() {
+            btnEl2.style.backgroundColor = 'aqua';
+            btnEl2.style.border = 'solid aqua';
+        });
+        btnEl2.addEventListener('mouseleave', function() {
+            btnEl2.style.backgroundColor = '#0077b6';
+            btnEl2.style.border = 'solid  #0077b6';
+        });
+    });
+    </script>
+    
+    </main>
+</body>
+</html>

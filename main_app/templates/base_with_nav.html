@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <nav class="side-navbar d-flex justify-content-between flex-wrap flex-column" style="background-color: black; position: fixed; width: 15%; max-width: 80px; height: 100%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
-        <img src="https://i.imgur.com/M4h8e2a.png"  style="width: 30px; max-width: 30px; text-align: center; margin-left: 25px; margin-top: 10px; border-radius: 12px; ">
-        <a id = "hover-nav" href="{% url 'index' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center; color: white;  font-weight: bold;">Home</a>
-        <a id = "hover-nav" href="{% url 'songs_index' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center;  color: white;  font-weight: bold;">Search</a>
-        <a id = "hover-nav" href="{% url 'playlist_create' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center; margin-bottom: 100%;  color: white;  font-weight: bold;">Create Playlist</a>
-        <p style="color: black; margin-top: 80%; padding-top: 5%; text-align: center; font-size: 11px; height: 0.0001vh;  color: white; border-top: solid grey;"> {{first_name}} <p>
+    <nav class="side-navbar d-flex justify-content-between flex-wrap flex-column" style="background-color: black; position: fixed; width: 20%; max-width: 90px;  min-width: 90px; height: 100%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+        <img src="https://i.imgur.com/M4h8e2a.png"  style="width: 33px; max-width: 33px; text-align: center; margin-left: 30px; margin-top: 10px; border-radius: 12px; ">
+        <a id = "hover-nav" href="{% url 'index' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center; color: white;  font-weight: bold;"><i class="fa fa-home" aria-hidden="true" style="margin-right: 6%; scale: 140%;"></i>Home</a>
+        <a id = "hover-nav" href="{% url 'songs_index' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center;  color: white;  font-weight: bold;"><i class="fa fa-search" aria-hidden="true" style="margin-right: 6%; scale: 140%"></i>Search</a>
+        <a id = "hover-nav" href="{% url 'playlist_create' %}" style="text-decoration: none; color: black; font-size: 13px; text-align: center; margin-bottom: 100%;  color: white;  font-weight: bold; margin-bottom: 12px; "><i class="fa fa-plus-square-o" aria-hidden="true" style="margin-right: 9%; padding-top: 28%; scale: 160%"></i>Create <span style="margin-left: 20%;">Playlist</span></a>
+        <p style="color: black; margin-top: 80%; padding-top: 20%; text-align: center; font-size: 11px; height: 0.0001vh;  color: white; border-top: solid grey;"> <i class="fa fa-user" aria-hidden="true" style="margin-top: 15%; margin-right: 6%; scale: 140%;"></i>{{first_name}} <p>
         <a href="{% url 'logout' %}" id ="btn-el"style="width:40px; background-color: #0077b6; color: azure; border-radius: 60px; border: solid #0077b6;font-size: 12px; text-decoration: none; margin-left: 20px;">Log Out</a>
     </nav>
 </head>
