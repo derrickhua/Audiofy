@@ -130,3 +130,27 @@ def like_song(request):
 class SongList(ListView):
   model = Song
 
+<<<<<<< HEAD
+=======
+@login_required
+def songs_index(request):
+  first_name = request.user.first_name
+  playlists = Playlist.objects.filter(user=request.user)
+  if request.method == 'POST':
+      query = request.POST.get('q')
+      object_list = Song.objects.filter(
+        Q(title__icontains=query) | Q(createdby__icontains=query)
+      )
+      songs = object_list
+  else: 
+     songs = Song.objects.order_by('-likes').all()
+  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
+
+@login_required
+def song_detail(request, song_id):
+  song = Song.objects.get(id=song_id)
+  return render(request, 'song/song_details.html',{
+    'song': song
+  })
+
+>>>>>>> 8f4428a670bc88310364b515571e651ddfb1b85f

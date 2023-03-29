@@ -16,8 +16,14 @@ urlpatterns = [
     # Liking a Song
     path('song/like_song', views.like_song, name='like_song'),
     path('songs/', views.songs_index, name='songs_index'),
+    path('songs/<int:song_id>/', views.song_detail, name='song_detail'),
     # Associate a Song with a Playlist
     path('playlists/<int:playlist_id>/assoc_song/<int:song_id>/', views.assoc_song, name='assoc_song'),
     # Unassociate a Song with a Playlist
     path('playlists/<int:playlist_id>/unassoc_song/<int:song_id>/', views.unassoc_song, name='unassoc_song'),
+<<<<<<< HEAD
 ]
+=======
+    path('song/like_song', views.like_song, name='like_song') 
+]
+>>>>>>> 8f4428a670bc88310364b515571e651ddfb1b85f

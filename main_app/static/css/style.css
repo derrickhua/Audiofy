@@ -80,6 +80,7 @@ body {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
+<<<<<<< HEAD
 .song_details {
     width: 50%;
     height: 50vh;
@@ -152,6 +153,8 @@ nav .circle {
     transform: scale(2.5);
 }
 
+=======
+>>>>>>> 8f4428a670bc88310364b515571e651ddfb1b85f
 #id_first_name {
     width: 65%;
     margin-left: 50%;
@@ -190,11 +193,86 @@ nav .circle {
 label {
     display: none;
 }
-
-/* tr > th > label {
-    display: block;
+/* styling for playlist detail page */
+.playlist_details {
+    background-color: darkcyan;
+    color: black;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 1rem 1rem;
+    padding-right: 20px;
+}
+.song {
+   background-color: darkcyan; 
+}
+.song a {
+    color: black; 
+    text-decoration: none;
+}
+.song :hover {
+    background-color: #11e5e8;
+    color: black; 
+    text-decoration: none;
 }
 
-input {
-    color: white;
-} *****
+/* styling for the song_details page */
+.music_player {
+    background-color: darkcyan;
+    width: 400px;
+    padding:35px 35px;
+    text-align: center;
+}
+.song_details {
+    position: relative;
+}
+#music-nav { 
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    top: 8px;
+    left: 16px; 
+}
+.music_player h1{
+    font-size: 40px;
+    font-weight: 400;
+    color: black;
+    margin-top: 20px;
+}
+.music_player p {
+    font-size: 14px;
+    color: grey;
+}
+#progress {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 6px;
+    background-color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 40px 0;
+}
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.controls div {
+    width: 60px;
+    margin: 10px; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black;
+    font-size: 30px;
+}
+.controls div:nth-child(2) {
+    transform: scale(2.5);
+}
