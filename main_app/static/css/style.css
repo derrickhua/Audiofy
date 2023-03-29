@@ -143,6 +143,8 @@ label {
 /* styling for the song_details page */
 .music_player {
     background-color: darkcyan;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
     width: 400px;
     padding:35px 35px;
     text-align: center;
