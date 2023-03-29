@@ -42,12 +42,28 @@
               </div>
         </div>
         <div class="col-1">
-            <a href="#" class="btn btn-primary">Like</a>
+            <span data-song-id="{{ song.id }}">
+                {{ song.likes }}
+            </span>
+            
+        </div>
+        <div class="col-1">
+        
+            <a href="#" class="btn btn-primary" onclick="return like( {{ song.id }} );">Like</a>
         </div>
     </div>
 </div>
 {% endfor %}
 
+<script>
+    async function like(songId){
+        // alert(songId)
+        let result = await fetch("{% url 'like_song' %}" + "?songId=" + songId ).then(result => result.text())
+        let likeCount = document.querySelector(`[data-song-id = '${songId}']`)
+        likeCount.innerText = result;
+
+   }
+</script>
 {% endblock %}
 
 
