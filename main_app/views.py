@@ -92,16 +92,37 @@ def unassoc_song(request, song_id, playlist_id):
 def songs_index(request):
   first_name = request.user.first_name
   playlists = Playlist.objects.filter(user=request.user)
+  genre = ''
   if request.method == 'POST':
-      query = request.POST.get('q')
-      object_list = Song.objects.filter(
-        Q(title__icontains=query) | Q(createdby__icontains=query)
-      )
-      songs = object_list
+      # if search by search bar
+      try: 
+        query = request.POST.get('q')
+        object_list = Song.objects.filter(
+          Q(title__icontains=query) | Q(createdby__icontains=query)
+        )        
+        songs = object_list
+      except:
+        query = request.POST.get('r')
+        genre = query
+        object_list = Song.objects.filter(
+          Q(genre__icontains=query)
+        )
+        songs = object_list
   else: 
     songs = Song.objects.order_by('-likes').all()
-  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
+  genres = []
+  for song in Song.objects.all():
+    genres.append(song.genre)
+  unique_genres = set(genres)
+  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists, 'genres':unique_genres, 'current_genre': genre})
 
+
+@login_required
+def song_detail(request, song_id):
+  song = Song.objects.get(id=song_id)
+  return render(request, 'song/song_details.html',{
+    'song': song
+  })
 
 def like_song(request):
   # song = Song.objects.get(song_id).likes
@@ -130,27 +151,3 @@ def like_song(request):
 class SongList(ListView):
   model = Song
 
-<<<<<<< HEAD
-=======
-@login_required
-def songs_index(request):
-  first_name = request.user.first_name
-  playlists = Playlist.objects.filter(user=request.user)
-  if request.method == 'POST':
-      query = request.POST.get('q')
-      object_list = Song.objects.filter(
-        Q(title__icontains=query) | Q(createdby__icontains=query)
-      )
-      songs = object_list
-  else: 
-     songs = Song.objects.order_by('-likes').all()
-  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
-
-@login_required
-def song_detail(request, song_id):
-  song = Song.objects.get(id=song_id)
-  return render(request, 'song/song_details.html',{
-    'song': song
-  })
-
->>>>>>> 8f4428a670bc88310364b515571e651ddfb1b85f
