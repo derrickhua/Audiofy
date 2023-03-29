@@ -7,9 +7,9 @@
   <div class="container">
     <div class="card playlist_details" style="width: 60rem;">
       <h3 class="card-title">{{ playlist.title }}</h3>
-          <a hhref="{% url 'playlist_update' playlist.id %}">Edit</a>
-          <a hhref="{% url 'playlist_delete' playlist.id %}">Delete</a>
-        <div class="card playlist_title" >
+          <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
+          <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
+        <div class="card playlist_title">
           {% if playlist.songs.count %}
           {% for song in playlist.songs.all %}
             <div class="card-body song">
