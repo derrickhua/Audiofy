@@ -127,5 +127,13 @@ def songs_index(request):
       )
       songs = object_list
   else: 
-    songs = Song.objects.order_by('-likes').all()
+     songs = Song.objects.order_by('-likes').all()
   return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
+
+@login_required
+def song_detail(request, song_id):
+  song = Song.objects.get(id=song_id)
+  return render(request, 'song/song_details.html',{
+    'song': song
+  })
+
