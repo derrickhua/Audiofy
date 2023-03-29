@@ -13,8 +13,8 @@
             {% csrf_token %}
             {{ form.as_p }}
     </div>
-    <div class="row d-flex justify-content-center">
-        <input type="submit" class="btn btn-primary" value="login" style="width:80px; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border:  #0077b6;">
+    <div class="row  d-flex justify-content-center">
+        <input type="submit" id="btn-el" class="btn btn-primary" value="login" style="width:80px; background-color:  #0077b6; color: azure; border-radius: 80px; font-weight: bold;  border:  #0077b6;">
         <input type="hidden" name="next" value="{{ next }}">
     </div>
     </form>
@@ -30,6 +30,14 @@
         document.getElementById("id_password").style.marginBottom = "2%";
         document.getElementById("id_password").style.paddingBottom = "2%";
         document.getElementById("id_username").style.paddingBottom = "2%";
-
+        btnEl = document.getElementById("btn-el")
+        btnEl.addEventListener('mouseenter', function() {
+            btnEl.style.backgroundColor = 'aqua';
+            btnEl.style.border = 'solid aqua';
+            });
+        btnEl.addEventListener('mouseleave', function() {
+            btnEl.style.backgroundColor = '#0077b6';
+            btnEl.style.border = 'solid  #0077b6';
+    });
     </script>
 {% endblock %}

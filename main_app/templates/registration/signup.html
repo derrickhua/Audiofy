@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="text-center">
-        <input type="submit" class="btn" value="Sign Up" style="width:80px; background-color:#0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid #0077b6;">
+        <input type="submit" class="btn" id="btn-el3"value="Sign Up" style="width:80px; background-color:#0077b6; color: azure; border-radius: 80px; font-weight: bold;  border: solid #0077b6;">
       </div>
     </form>
   </div>
@@ -57,5 +57,14 @@
   document.getElementById("id_email").placeholder = "Email Address";
   document.getElementById("id_password1").placeholder = "Password (at least 8 characters)";
   document.getElementById("id_password2").placeholder = "Confirm Password";
+  btnEl3 = document.getElementById("btn-el3")
+  btnEl3.addEventListener('mouseenter', function() {
+    btnEl3.style.backgroundColor = 'aqua';
+    btnEl3.style.border = 'solid aqua';
+    });
+    btnEl3.addEventListener('mouseleave', function() {
+    btnEl3.style.backgroundColor = '#0077b6';
+    btnEl3.style.border = 'solid  #0077b6';
+    });
 </script>
 {% endblock %}
