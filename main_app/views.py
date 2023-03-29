@@ -84,8 +84,26 @@ def assoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.add(song_id)
   return redirect('songs_index')
 
+def unassoc_song(request, song_id, playlist_id):
+  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
+  return redirect('songs_index')
+
+@login_required
+def songs_index(request):
+  first_name = request.user.first_name
+  playlists = Playlist.objects.filter(user=request.user)
+  if request.method == 'POST':
+      query = request.POST.get('q')
+      object_list = Song.objects.filter(
+        Q(title__icontains=query) | Q(createdby__icontains=query)
+      )
+      songs = object_list
+  else: 
+    songs = Song.objects.order_by('-likes').all()
+  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
+
+
 def like_song(request):
-  
   # song = Song.objects.get(song_id).likes
   song_id = int(request.GET.get("songId"))
   song = Song.objects.get(id=song_id)
@@ -109,23 +127,6 @@ def like_song(request):
   # we will add code to increase in db
   # return likes + 1
 
-def unassoc_song(request, song_id, playlist_id):
-  Playlist.objects.get(id=playlist_id).songs.remove(song_id)
-  return redirect('songs_index')
-
 class SongList(ListView):
   model = Song
 
-@login_required
-def songs_index(request):
-  first_name = request.user.first_name
-  playlists = Playlist.objects.filter(user=request.user)
-  if request.method == 'POST':
-      query = request.POST.get('q')
-      object_list = Song.objects.filter(
-        Q(title__icontains=query) | Q(createdby__icontains=query)
-      )
-      songs = object_list
-  else: 
-    songs = Song.objects.order_by('-likes').all()
-  return render(request, 'song/songs.html', {'first_name': first_name, 'user_id': request.user.id, 'songs':songs, 'playlists':playlists})
