@@ -111,7 +111,7 @@ def like_song(request):
 
 def unassoc_song(request, song_id, playlist_id):
   Playlist.objects.get(id=playlist_id).songs.remove(song_id)
-  return redirect('songs_index')
+  return redirect('playlist_detail', playlist_id=playlist_id)
 
 class SongList(ListView):
   model = Song

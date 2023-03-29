@@ -1,8 +1,10 @@
 body {
-    background: linear-gradient(to bottom, #023E8A, #131213, #131213, #131213);
+    background: linear-gradient(to right,  #099CAB,#1EA69C, #77D55B);
     height: 100vh;
     background-attachment: fixed;
-    color: white;
+    color: black;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 30px;
 }
 
 .side-navbar {
@@ -120,15 +122,16 @@ label {
 }
 /* styling for playlist detail page */
 .playlist_details {
-    background-color: darkcyan;
+    background: rgb(240, 249, 226);
     color: black;
     display: inline-block;
-    border: 1px solid black;
+    box-shadow: 0px 0px 80px grey;
     padding: 1rem 1rem;
     padding-right: 20px;
 }
-.song {
-   background-color: darkcyan; 
+.playlist_title {
+    background-color: rgb(240, 249, 226);;
+    box-shadow: 0px 0px 80px grey;
 }
 .song a {
     color: black; 
@@ -139,19 +142,29 @@ label {
     color: black; 
     text-decoration: none;
 }
+.playlist-song-image {
+    width: 100px; 
+    border-radius: 30%; 
+    margin: 5%;
+}
 
 /* styling for the song_details page */
+.song-image {
+    width: 220px;
+    box-shadow: 0px 10px 60px black;
+}
 .music_player {
-    background-color: darkcyan;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+    background-color: rgb(240, 249, 226);
+    box-shadow: 0px 0px 200px greenyellow;
+    /* filter: blur(8px);
+    -webkit-filter: blur(8px); */
     width: 400px;
-    padding:35px 35px;
+    padding: 40px 40px;
     text-align: center;
 }
-.song_details {
+/* .song_details {
     position: relative;
-}
+} */
 #music-nav { 
     text-decoration: none;
     color: black;
@@ -171,7 +184,7 @@ label {
 }
 #progress {
     -webkit-appearance: none;
-    width: 50%;
+    width: 80%;
     height: 6px;
     background-color: black;
     border-radius: 4px;
