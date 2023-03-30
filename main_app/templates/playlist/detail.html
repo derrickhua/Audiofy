@@ -1,12 +1,12 @@
 {% extends 'base_with_nav.html' %}
 {% block content %}
 <div class="row  d-flex justify-content-center text-center">
-<h1 class="col-auto">Playlist Details</h1>
+<h1 class="col-auto" style="margin-top: 2%;">Playlist Details</h1>
 </div>
-<section class="container" style="width: 60rem; margin-top: 5%;">
+<section class="container" style="width: 60rem; margin-top: 2%; scale: 70%;">
   <div class="container text-center">
     <div class="card row playlist-title" style="width: 60rem;">
-      <h3 class="card-title">{{ playlist.title }} <i class="fa fa-play-circle" aria-hidden="true"></i></h3>
+      <h3 class="card-title" style="font-size: 110%;">{{ playlist.title }} <i class="fa fa-play-circle" aria-hidden="true"></i></h3>
           {% if playlist.user == user %}
           <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
           <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
