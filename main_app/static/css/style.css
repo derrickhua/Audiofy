@@ -35,8 +35,8 @@ body {
 }
 
 #hover-nav:hover {
-    font-style: italic;
-    background-color: lightslategray;
+    scale: 106%;
+    font-weight: bold;
 }
 
 #hover-nav {
