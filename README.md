@@ -12,7 +12,7 @@ Audiofy is available to access [here](https://audiofyapp.herokuapp.com/) (deploy
 ## Technologies Used
 1. Python
 2. Django
-3. PostresQL
+3. PostgresQL
 4. JavaScript
 5. Bootstrap
 6. Amazon Web Services
