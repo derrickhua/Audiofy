@@ -2,24 +2,36 @@
 {% block content %}
 <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
+        {% if current_genre != '' %}
+        <div class = "col" style="margin-left:10%;">
+            <h2>{{ current_genre }}</h2>
+        </div>
+        {% endif %}
+    </div>
         <div class = "col" style="margin-left:10%;">
             <form action="{% url 'songs_index' %}" method="post" style="width:140%; margin-left: 30%;">
                 {% csrf_token %}
                 <input id="search-bar"name="q" type="text" placeholder=" Search for a song..." style="margin-top: 0.3%; height: 90%;">
                 <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: #0077b6; scale: 110%; margin-bottom: 0.5%; margin-top: 0.06%; ">Search</button>
+                <select name='g' class="form-select" aria-label="Default select example" style="width:15%; margin-left: 2%;">
+                    <option selected>Search by Genre</option>
+                    {% for genre in genres %}
+                    <option value={{ genre }}>{{ genre }}</option>
+                    {% endfor %}
+                </select>
             </form>
         </div>
     </div>
 </div>
 <h1 class = "text-center" style="margin-bottom:2%; margin-top: 0.5%;">Available Songs</h1>
 {% for song in songs.all %}
-<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: whitesmoke; background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: rgb(243, 249, 234); background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
     <div class="row">
         <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
+            <img src="{{song.cover_url}}" style="width:85%; border-radius: 30%; margin: 3%;">
         </div>
         <div class="col-3">
-            <a href="" style="text-decoration: none; color:black;"><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
+            <a href="{% url 'song_detail' song.id %}" style="text-decoration: none; color:black;"><i class="fa fa-play-circle" aria-hidden="true"></i><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
         </div>
         <div class="col-3">
             <h6 class="card-content" style="margin-top: 4%; font-size: 105%;"> by  {{ song.createdby }}</a>
@@ -99,6 +111,3 @@
    }
 </script>
 {% endblock %}
-
-
-
