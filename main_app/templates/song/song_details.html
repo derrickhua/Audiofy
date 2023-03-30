@@ -18,7 +18,7 @@
       <input type="range" value="0" id="progress"> 
         <div class="controls">
         <div><i class="fa fa-step-backward" aria-hidden="true" id="previousSong"></i></div>
-        <div onclick="playPause()"><i class="fa fa-play-circle" aria-hidden="true" id="playIcon"></i></div>
+        <div onclick="playPause()"><i class="fa fa-play" aria-hidden="true" id="playIcon"></i></div>
         <div><i class="fa fa-step-forward" aria-hidden="true" id="nextSong"></i></div>
       </div>
     </div>
@@ -36,15 +36,15 @@
       }
 
       function playPause(){
-        if(playIcon.classList.contains("fa-pause-circle-o")){
+        if(playIcon.classList.contains("fa-pause")){
           song.pause();
-          playIcon.classList.remove("fa-pause-circle-o");
-          playIcon.classList.add("fa-play-cirle");
+          playIcon.classList.remove("fa-pause");
+          playIcon.classList.add("fa-play");
         }
         else{
           song.play();
-          playIcon.classList.add("fa-pause-circle-o");
-          playIcon.classList.remove("fa-palay-cirle");
+          playIcon.classList.add("fa-pause");
+          playIcon.classList.remove("fa-palay");
         }
       }
 
@@ -57,8 +57,8 @@
       progress.onchange= function(){
         song.play();
         song.currentTime= progress.value;
-        playIcon.classList.add("fa-pause-circle-o");
-        playIcon.classList.remove("fa-palay-cirle");
+        playIcon.classList.add("fa-pause");
+        playIcon.classList.remove("fa-palay");
       }
 
       song.pause()

@@ -31,7 +31,7 @@
             <img src="{{song.cover_url}}" style="width:85%; border-radius: 30%; margin: 3%;">
         </div>
         <div class="col-3">
-            <a href="" style="text-decoration: none; color:black;"><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
+            <a href="{% url 'song_detail' song.id %}" style="text-decoration: none; color:black;"><i class="fa fa-play-circle" aria-hidden="true"></i><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
         </div>
         <div class="col-3">
             <h6 class="card-content" style="margin-top: 4%; font-size: 105%;"> by  {{ song.createdby }}</a>
