@@ -1,1 +1,1 @@
-web: gunicorn pokemoncollector.wsgi
+web: gunicorn spotifyboof.wsgi
