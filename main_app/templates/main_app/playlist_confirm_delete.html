@@ -1,13 +1,13 @@
 {% extends 'base_with_nav.html' %}
 
 {% block content %}
-  <h1>Delete Test</h1>
+  <h1 class="text-center" style="padding-top: 2%;">Delete Test</h1>
 
-  <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+  <h4 class="text-center" style="padding-top: 2%;">Are you sure you want to delete the playlist named <span class="teal-text">{{ playlist.title }}</span>?</h4>
 
-  <form action="" method="POST">
+  <form action="" method="POST" class="text-center" style="padding-top: 2%;">
     {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'index' %}">Cancel</a>
+    <button><input type="submit" value="YES - Delete!" class="btn"></button>
+    <button><a href="{% url 'index' %}">NO - Cancel!</a></button>
   </form>
 {% endblock %}
