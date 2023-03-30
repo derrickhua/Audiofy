@@ -4,19 +4,17 @@
   <h1 class="col-auto">Song Details</h1>
 </div>
 
-<div>
-  <div class="song_details row  d-flex justify-content-center text-center">
-    <nav>
-      <a id="music-nav" class="fa fa-arrow-circle-o-left" aria-hidden="true" type=button onClick="javascript:history.go(-1);"></a>
-    </nav>
+<div class="container-song">
+  <div class="song_details row  d-flex justify-content-center text-center" style="margin-top: 5%; border-radius: 20%;">
     <div class="music_player">
-      <img src="" class="song-image"> 
+      <img src="{{song.cover_url}}" class="song-image"> 
       <h1>{{ song.title }}</h1>
       <p>{{ song.createdby }}</p> 
       
       <audio id="song">
         <source src="{{song.song_link}}" type="audio/mp3">
       </audio>
+
       <input type="range" value="0" id="progress"> 
         <div class="controls">
         <div><i class="fa fa-step-backward" aria-hidden="true" id="previousSong"></i></div>
@@ -62,9 +60,11 @@
         playIcon.classList.add("fa-pause-circle-o");
         playIcon.classList.remove("fa-palay-cirle");
       }
-    </script> 
 
+      song.pause()
+    </script> 
   </div>
 </div>
+
 
 {% endblock %}
