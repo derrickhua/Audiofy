@@ -7,7 +7,7 @@ Audiofy is available to access [here](https://audiofyapp.herokuapp.com/) (deploy
 
 ## Screenshots
  ![search page](/screenshots/searchpage.PNG?raw=true)
- ![songdetails1](/screenshots/songdetails1.PNG?raw=true)
+ ![songdetails2](/screenshots/songdetails1.PNG?raw=true)
 
 ## Technologies Used
 1. Python
