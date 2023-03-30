@@ -7,7 +7,7 @@ Audiofy is available to access [here](https://audiofyapp.herokuapp.com/) (deploy
 
 ## Screenshots
  ![search page](/screenshots/searchpage.PNG?raw=true)
- ![songs details](/screenshots/songdetails.PNG?raw=true)
+ ![songsdetails](/screenshots/songdetails.PNG?raw=true)
 
 ## Technologies Used
 1. Python
@@ -40,6 +40,5 @@ Clicking the heart next to each song turns it red. The user is then able to to s
 3. Get a music API to have a bigger song database.
 
 ## Attributions
-
- [Logo](looka.com) 
- Song and images were taken from assosiated artists. 
+1. Song and images were taken from assosiated artists. 
+2. Logo was created [here](looka.com).
