@@ -3,39 +3,32 @@
 <div class="container">
     <div class="row height d-flex justify-content-center align-items-center">
         {% if current_genre != '' %}
-        <div class = "col" style="margin-left:5%;">
+        <div class = "col" style="margin-left:10%;">
             <h2>{{ current_genre }}</h2>
         </div>
         {% endif %}
     </div>
-
         <div class = "col" style="margin-left:10%;">
             <form action="{% url 'songs_index' %}" method="post" style="width:140%; margin-left: 30%;">
                 {% csrf_token %}
-                <select name='g' class="form-select" aria-label="Default select example" style="width:15%;">
+                <input id="search-bar"name="q" type="text" placeholder=" Search for a song..." style="margin-top: 0.3%; height: 90%;">
+                <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: #0077b6; scale: 110%; margin-bottom: 0.5%; margin-top: 0.06%; ">Search</button>
+                <select name='g' class="form-select" aria-label="Default select example" style="width:15%; margin-left: 2%;">
                     <option selected>Search by Genre</option>
                     {% for genre in genres %}
                     <option value={{ genre }}>{{ genre }}</option>
                     {% endfor %}
                 </select>
-                <input id="search-bar" name="q" type="text" placeholder=" Search for a song..." style="margin-top: 0.3%; height: 90%;">
-                <button id="btn-el5"type="submit" class="btn btn-primary" style="background-color: gray; scale: 110%; margin-bottom: 0.5%; margin-top: 0.06%; ">Search</button>
             </form>
         </div>
     </div>
 </div>
 <h1 class = "text-center" style="margin-bottom:2%; margin-top: 0.5%;">Available Songs</h1>
 {% for song in songs.all %}
-<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: rgb(235, 239, 227);; background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: rgb(243, 249, 234); background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
     <div class="row">
         <div class="col-1">
-            <img src="{{song.cover_url}}" style="width:85%; border-radius: 30%; margin: 5%;">
-        </div>
-        <div class="col-5">
-            <a href="{% url 'song_detail' song.id %}" style="text-decoration: none; color:black;"><h6 class="card-header">{{ song.title }} by {{ song.createdby }}</h5></a>
-        </div>
-        <div class="col-1">
-            <h6 class="card-text" style="margin-top: 19%;">3:51</a>
+            <img src="{{song.cover_url}}" style="width:85%; border-radius: 30%; margin: 3%;">
         </div>
         <div class="col-3">
             <a href="" style="text-decoration: none; color:black;"><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
@@ -45,7 +38,7 @@
         </div>
         <div class="col-2">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 10%; margin: 5% 4% 0 0; background-color: #099CAB;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 10%; margin: 5% 4% 0 0; background-color: black;">
                   Add to Playlist
                 </button>
                 <ul class="dropdown-menu">
@@ -74,7 +67,6 @@
 </div>
 
 <script>
-  
     emptyHearts = document.querySelectorAll(".fa.fa-heart-o")
     emptyHearts.forEach(function(heart) {
         heart.addEventListener('mouseenter', function() {
@@ -102,8 +94,8 @@
       btnEl5.style.border = 'aqua';
       });
     btnEl5.addEventListener('mouseleave', function() {
-      btnEl5.style.backgroundColor = 'greenyellow';
-      btnEl5.style.border = 'black';
+      btnEl5.style.backgroundColor = '#0077b6';
+      btnEl5.style.border = '#0077b6';
       });
 
 </script>

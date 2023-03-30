@@ -5,29 +5,35 @@
 </div>
 <section class="container" style="width: 60rem; margin-top: 5%;">
   <div class="container text-center">
-    <div class="card playlist_details" style="width: 60rem;">
+    <div class="card row playlist-title" style="width: 60rem;">
       <h3 class="card-title">{{ playlist.title }}</h3>
           <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
           <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
-    </div>
-    <div class="card playlist_title" style="width: 60rem; margin-top: 5%;">
-      {% if playlist.songs.count %}
-      {% for song in playlist.songs.all %}  
-      <a href="{% url 'song_detail' song.id %}">
-      <img src="{{song.cover_url}}" class="playlist-song-image">
-          <h1>{{ song.title }} by {{ song.createdby }}</h1>
-        <div class="card-action">
+
+    {% if playlist.songs.count %}
+    {% for song in playlist.songs.all %} 
+    <div class="card playlist-songs" style="width: 60rem; margin-top: 5%;"> 
+      <div class="row">
+        <div class="col-2">
+            <img src="{{song.cover_url}}" class="playlist-song-image" style="width:85%; border-radius: 30%; margin: 3%;">
+        </div>
+        <div class="col-4 playlist-song-title">
+          <a href="{% url 'song_detail' song.id %}" style="text-decoration: none; color:black; margin-top: 4%;">{{ song.title }}</a>
+        </div>
+        <div class="col-4">
+          <a href="{% url 'song_detail' song.id %}" style="text-decoration: none; color:black; margin-top: 4%;">by {{ song.createdby }}</a>
+        </div>
+        <div class="col-2 delete-song" style="margin-top: 1%;">
           <form action="{% url 'unassoc_song' playlist.id song.id %}" method="post">
               {% csrf_token %}
-            <button type="submit" class="btn">Remove Song</button>
-          </form>
+            <button type="submit" class="btn"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </form>  
         </div>
-      </a>
-      {% endfor %}
-      {% endif %}
-    </div> 
+      </div> 
+    </div>
+    {% endfor %}
+    {% endif %} 
   </div>
 </section>
-
-
+ 
 {% endblock %}
