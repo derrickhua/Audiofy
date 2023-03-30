@@ -25,10 +25,10 @@
 </div>
 <h1 class = "text-center" style="margin-bottom:2%; margin-top: 0.5%;">Available Songs</h1>
 {% for song in songs.all %}
-<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: whitesmoke; background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
+<div class="card cards22" style="color: black; margin: 0 10% 0 16%; margin-bottom: 1%; background: rgb(243, 249, 234); background-attachment: fixed; width:74%; font-size: 80%; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);">
     <div class="row">
         <div class="col-1">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e8/Taylor_Swift_-_Red.png" style="width:85%; border-radius: 20%; margin-left: 3%;">
+            <img src="{{song.cover_url}}" style="width:85%; border-radius: 30%; margin: 3%;">
         </div>
         <div class="col-3">
             <a href="" style="text-decoration: none; color:black;"><h6 class="card-content" style="margin-top: 4%; font-size: 105%;">{{ song.title }}</h6></a>
@@ -110,5 +110,4 @@
 
    }
 </script>
-{% endblock %}
-
+{% endblock %
