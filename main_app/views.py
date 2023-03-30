@@ -51,11 +51,13 @@ class PlaylistDelete(LoginRequiredMixin, DeleteView):
 def playlist_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
   user = request.user
+  first_name = request.user.first_name
   songs_not_added = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
   return render(request, 'playlist/detail.html', {
     'playlist': playlist, 
     'songs': songs_not_added,
-    'user': user
+    'user': user,
+    'first_name': first_name
   })
 
 @login_required
@@ -120,8 +122,10 @@ def songs_index(request):
 @login_required
 def song_detail(request, song_id):
   song = Song.objects.get(id=song_id)
+  first_name = request.user.first_name
   return render(request, 'song/song_details.html',{
-    'song': song
+    'song': song,
+    'first_name': first_name,
   })
 
 def like_song(request):
