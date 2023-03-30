@@ -204,5 +204,5 @@ label {
     font-size: 30px;
 }
 .controls div:nth-child(2) {
-    transform: scale(2.5);
+    transform: scale(2.0);
 }
