@@ -7,9 +7,10 @@
   <div class="container text-center">
     <div class="card row playlist-title" style="width: 60rem;">
       <h3 class="card-title">{{ playlist.title }} <i class="fa fa-play-circle" aria-hidden="true"></i></h3>
+          {% if playlist.user == user %}
           <a href="{% url 'playlist_update' playlist.id %}">Edit</a>
           <a href="{% url 'playlist_delete' playlist.id %}">Delete</a>
-
+          {% endif %}
     {% if playlist.songs.count %}
     {% for song in playlist.songs.all %} 
     <div class="card playlist-songs" style="width: 60rem; margin-top: 5%;"> 

@@ -40,15 +40,22 @@ class PlaylistUpdate(LoginRequiredMixin, UpdateView):
 
 class PlaylistDelete(LoginRequiredMixin, DeleteView):
   model = Playlist
+
+  def form_valid(self, form):
+    playlist_to_delete = self.get_object()
+    if playlist_to_delete.user == self.request.user:
+      return super().form_valid(form)
   success_url = '/playlists'
 
 @login_required
 def playlist_detail(request, playlist_id):
   playlist = Playlist.objects.get(id=playlist_id)
+  user = request.user
   songs_not_added = Song.objects.exclude(id__in = playlist.songs.all().values_list('id'))
   return render(request, 'playlist/detail.html', {
     'playlist': playlist, 
     'songs': songs_not_added,
+    'user': user
   })
 
 @login_required
