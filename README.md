@@ -1,7 +1,7 @@
 # Audiofy
 
 ## Description
-Audiofy is a music listening app designed so that listeners can enjoy their favourite music. Through the apps’s interface, users can maintain their own collection of music, listen, like/dislike songs, and add them to playlists. The Audiofy app was built with love by Lara Livera, Andrew S, Derrick Hua & Aggrey Ellis.
+Audiofy is a music listening app designed so that listeners can enjoy their favourite music. Through the apps’s interface, users can maintain their own collection of music, listen, like/dislike songs, and add them to playlists. The Audiofy app was built with love by Lara Livera, Andrew Santos, Derrick Hua & Aggrey Ellis.
 
 Audiofy is available to access [here](https://audiofyapp.herokuapp.com/) (deployed via Heroku).
 
@@ -40,5 +40,5 @@ Clicking the heart next to each song turns it red. The user is then able to to s
 3. Get a music API to have a bigger song database.
 
 ## Attributions
-1. Song and images were taken from assosiated artists. 
+1. Song and images were taken from associated artists. 
 2. Logo was created [here](looka.com).
