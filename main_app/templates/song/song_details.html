@@ -1,11 +1,19 @@
 {% extends 'base_with_nav.html' %}
 {% block content %}
 <div class="row  d-flex justify-content-center text-center">
-  <h1 class="col-auto" style="margin-top: 1%;">Song Details</h1>
+  <h1 class="col-auto" style="margin-top: 0.5%;">Song Details</h1>
 </div>
-<div class="container-song">
-  <div class="song_details row  d-flex justify-content-center text-center" style="border-radius: 20%; margin-bottom: 8%;">
+<div class="container-song" style="scale:80%;">
+  <div class="song_details row  d-flex justify-content-center text-center" style="border-radius: 20%;  transform: translateY(-10%);">
     <div class="music_player">
+      <nav>
+        <div>
+          <i class="fa fa-arrow-left" aria-hidden="true" type=button value="Previous Page" onClick="javascript:history.go(-1);"></i>
+        </div>
+        <div>
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+      </nav>
       <img src="{{song.cover_url}}" class="song-image"> 
       <h1>{{ song.title }}</h1>
       <p>{{ song.createdby }}</p> 
@@ -21,49 +29,48 @@
         <div><i class="fa fa-step-forward" aria-hidden="true" id="nextSong"></i></div>
       </div>
     </div>
-    
-    <script>
-      let progress= document.getElementById("progress");
-      let song= document.getElementById("song");
-      let playIcon= document.getElementById("playIcon");
-      let prevSong= document.getElementById("previousSong");
-      let nextSong= document.getElementById("nextSong");
-
-      song.onloadedmetadata= function(){
-        progress.max= song.duration;
-        progress.value= song.currentTime;
-      }
-
-      function playPause(){
-        if(playIcon.classList.contains("fa-pause")){
-          song.pause();
-          playIcon.classList.remove("fa-pause");
-          playIcon.classList.add("fa-play");
-        }
-        else{
-          song.play();
-          playIcon.classList.add("fa-pause");
-          playIcon.classList.remove("fa-palay");
-        }
-      }
-
-      if(song.play()){
-        setInterval(()=>{
-          progress.value= song.currentTime;
-        },500);
-      }
-
-      progress.onchange= function(){
-        song.play();
-        song.currentTime= progress.value;
-        playIcon.classList.add("fa-pause");
-        playIcon.classList.remove("fa-palay");
-      }
-
-      song.pause()
-    </script> 
   </div>
 </div>
 
+<script>
+  let progress= document.getElementById("progress");
+  let song= document.getElementById("song");
+  let playIcon= document.getElementById("playIcon");
+  let prevSong= document.getElementById("previousSong");
+  let nextSong= document.getElementById("nextSong");
+
+  song.onloadedmetadata= function(){
+    progress.max= song.duration;
+    progress.value= song.currentTime;
+  }
+
+  function playPause(){
+    if(playIcon.classList.contains("fa-pause")){
+      song.pause();
+      playIcon.classList.remove("fa-pause");
+      playIcon.classList.add("fa-play");
+    }
+    else{
+      song.play();
+      playIcon.classList.add("fa-pause");
+      playIcon.classList.remove("fa-palay");
+    }
+  }
+
+  if(song.play()){
+    setInterval(()=>{
+      progress.value= song.currentTime;
+    },500);
+  }
+
+  progress.onchange= function(){
+    song.play();
+    song.currentTime= progress.value;
+    playIcon.classList.add("fa-pause");
+    playIcon.classList.remove("fa-palay");
+  }
+
+  song.pause()
+</script> 
 
 {% endblock %}
