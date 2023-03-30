@@ -1,25 +1,45 @@
 # Audiofy
-### 
----------------------------------
-###  
-![alt text]()
-##  
-![alt text]()
- 
--------------------------------------
-# Technologies Used:
-## This was created using HTML, CSS, Bootstrap templates, Javascript, Python, Django generator, Postgres QO, Bit.io, AWS and Heroku. 
-## Logo was created on looka.com. Song and images taken from assosiated artists. 
-______________________________________
 
-# Getting started
-## Follow the link below to try the site for yourself
--[Audiofy](https://audiofyapp.herokuapp.com/)
+## Description
+Audiofy is a music listening app designed so that listeners can enjoy their favourite music. Through the apps’s interface, users can maintain their own collection of music, listen, like/dislike songs, and add them to playlists. The Audiofy app was built with love by Lara Livera, Andrew S, Derrick Hua & Aggrey Ellis.
 
----------------------------------------
+Audiofy is available to access [here](https://audiofyapp.herokuapp.com/) (deployed via Heroku).
 
-# Icebox Items:
-### 1. Getting music to play continuously when on different views in a bottom nav bar.
-### 2. Getting playlist to play and switching to the next/previous song. 
-### 3. Get a music API to have a bigger song database.
-- [Trello Board]()
+## Screenshots
+ ![search page](/screenshots/searchpage.PNG?raw=true)
+ ![songs details](/screenshots/songdetails.PNG?raw=true)
+
+## Technologies Used
+1. Python
+2. Django
+3. PostresQL
+4. JavaScript
+5. Bootstrap
+6. Amazon Web Services
+7. CSS
+8. HTML
+9. Bit.io
+10. Heroku
+
+## Getting Started
+### Login/Signup
+The login function allows the user to create an account to manage their own personal collection of music.
+### Search
+The Search feature allows you to search for songs, either by artist, or genre. Search will return results that fit the specified criteria. Clicking the play button next to the song will play it! It will also display the album artwork for the song.
+### Song Play
+This feature allows you to play the song
+### Playlists
+This function allows the user to maintain a personal collection of songs that they have chosen inside the app.
+### Like
+Clicking the heart next to each song turns it red. The user is then able to to see the songs that they have liked. The number of times that a song has been liked is displayed right next to it. A user may like a song only once. Clicking the heart again will unlike the song.
+
+
+## Icebox 
+1. Getting music to play continuously when on different views in a bottom nav bar.
+2. Getting playlist to play and switching to the next/previous song. 
+3. Get a music API to have a bigger song database.
+
+## Attributions
+
+ [Logo](looka.com) 
+ Song and images were taken from assosiated artists. 
